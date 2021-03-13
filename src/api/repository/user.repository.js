@@ -23,11 +23,11 @@ const save = async (user) => {
 }
 
 
-const findCpf= async (user) => {
+const find= async (user) => {
     return new Promise(async (resolve, reject) => {
         try {
 
-            const sqlStatement = `SELECT * FROM users WHERE cpf = "${user.cpf}";`
+            const sqlStatement = `SELECT * FROM users WHERE cpf = "${user.cpf}" OR login = "${user.login}";`
             const result = await database.execute(sqlStatement)
 
             resolve(result)
@@ -39,19 +39,4 @@ const findCpf= async (user) => {
     })
 }
 
-const findLogin = async (user) => {
-    return new Promise(async (resolve, reject) => {
-        try {
-
-            const sqlStatement = `SELECT * FROM users WHERE login = "${user.login}";`
-            const result = await database.execute(sqlStatement)
-
-            resolve(result)
-            console.log(result)
-        } catch (error) {
-            console.error(error)
-            reject(error)
-        }
-    })
-}
-module.exports = { save, findCpf, findLogin }
+module.exports = { save, find }
