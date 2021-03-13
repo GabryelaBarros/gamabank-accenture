@@ -27,10 +27,11 @@ const find = async (user) => {
     return new Promise(async (resolve, reject) => {
         try {
 
-            const sqlStatement = `SELECT * FROM users WHERE login = "${user.login}";`
+            const sqlStatement = `SELECT * FROM users WHERE cpf = "${user.cpf}";`
             const result = await database.execute(sqlStatement)
 
             resolve(result)
+            console.log(result)
         } catch (error) {
             console.error(error)
             reject(error)

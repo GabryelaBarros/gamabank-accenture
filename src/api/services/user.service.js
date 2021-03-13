@@ -9,11 +9,10 @@ const createAccount = async (newUser) => {
     if (userFromDb.length === 0) {
         repository.save(newUser)
     }
+    
+    const userCheck = userFromDb.length > 0 ? 'Este usuário possui um cadastro' : 'Novo usuário cadastrado com sucesso!'
 
-    return userFromDb.length > 0 ? userFromDb : newUser
+    return userCheck
 }
-
-
-
 
 module.exports = { createAccount }

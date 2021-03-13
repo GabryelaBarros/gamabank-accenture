@@ -6,8 +6,8 @@ const newAccount = async (request, h) => {
 
     const user = new User(request.payload)
     console.log(user);
-    const result = await service.createAccount(user)
-    return result
+    const userCheck = await service.createAccount(user)
+    return userCheck
 
 }
 
