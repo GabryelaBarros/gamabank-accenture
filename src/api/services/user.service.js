@@ -3,6 +3,7 @@ const repository = require('../repository/user.repository')
 
 
 
+
 const createAccount = async (newUser) => {
     const dataFromDb = await repository.find(newUser)
 
@@ -15,5 +16,7 @@ const createAccount = async (newUser) => {
 
     return dataCheck
 }
+
+
 
 module.exports = { createAccount }
