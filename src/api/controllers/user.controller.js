@@ -8,17 +8,16 @@ const newAccount = async (request, h) => {
     console.log(user)
     const dataCheck = await service.createAccount(user)
 
-    if(dataCheck === true){
-        h.response({
-            message: 'cadstrado com sucesso'
-        }).code(201)    
+    if (dataCheck) {
+        return h.response({
+            message: 'cadastrado com sucesso'
+        }).code(201)
+
+    } else {
+        return h.response({
+            message: 'o usuário já está cadastrado'
+        }).code(433)
     }
-    
-    
-    return 
-
-    
-
 
 }
 
