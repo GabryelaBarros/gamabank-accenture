@@ -6,7 +6,6 @@ class User {
         this.login = login
         this.password = password
         this.salt = salt
-        
     }
 }   
 

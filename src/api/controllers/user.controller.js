@@ -7,16 +7,17 @@ const newAccount = async (request, h) => {
     const user = new User(request.payload)
 
     const passLength = user.password.length
-        
-    if(passLength <= 6){
-       
-        return h.response({
-            message: 'A senha deve possuir mais que 6 caracters'
-        }).code(406)
-    }
 
     console.log(user)
-    const dataCheck = await service.createAccount(user)
+    let dataCheck
+
+    try {
+        dataCheck = await service.createAccount(user)
+    } catch (exception) {
+        return h.response({
+            message: exception.name
+        }).code(exception.status)
+    }
 
     if (dataCheck) {
         return h.response({
