@@ -6,20 +6,19 @@ const newAccount = async (request, h) => {
 
     const user = new User(request.payload)
 
-    const passLength = user.password.length
-
     console.log(user)
-    let dataCheck
 
+    let newCreateAccount
+    
     try {
-        dataCheck = await service.createAccount(user)
+        newCreateAccount = await service.createAccount(user)
     } catch (exception) {
         return h.response({
-            message: exception.name
+            message: exception.message
         }).code(exception.status)
     }
 
-    if (dataCheck) {
+    if (newCreateAccount) {
         return h.response({
             message: 'cadastrado com sucesso'
         }).code(201)
