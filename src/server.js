@@ -17,7 +17,7 @@ const server = () => {
 }
 
 process.on('unhandledRejection', err => {
-    console.log('---->  Deu ruim !')
+    console.log('---->  Deu ruim !') //colocar uma exception Aqui!!!!
     console.error(err)
     process.exit(1)
 })

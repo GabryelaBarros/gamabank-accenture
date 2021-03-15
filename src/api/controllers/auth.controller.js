@@ -14,7 +14,7 @@ const validate = async (request, h) => {
     if(!token) return { auth: false, message: 'No token provided'}   
 
     try {
-        const result = await service.verify(token)
+        const result = await service.verify(token) //isso é pra ficar dentro do arquivo de auth service? 
         return result
     } catch (error) {
         return error

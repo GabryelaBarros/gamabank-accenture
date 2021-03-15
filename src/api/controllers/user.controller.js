@@ -2,23 +2,24 @@ const service = require('../services/user.service')
 const User = require('../models/user')
 
 
-const newAccount = async (request, h) => {
+const newUser = async (request, h) => {
 
     const user = new User(request.payload)
 
     console.log(user)
 
-    let newCreateAccount
+    let newCreateUser//mudar depóis
     
     try {
-        newCreateAccount = await service.createAccount(user)
+        newCreateUser = await service.createUser(user)
     } catch (exception) {
+        console.log(exception);
         return h.response({
             message: exception.message
         }).code(exception.status)
     }
 
-    if (newCreateAccount) {
+    if (newCreateUser) {
         return h.response({
             message: 'cadastrado com sucesso'
         }).code(201)
@@ -26,9 +27,9 @@ const newAccount = async (request, h) => {
     } else {
         return h.response({
             message: 'o usuário já está cadastrado'
-        }).code(433) // ver se o erro é o certo
+        }).code(409) // ver se o erro é o certo
     }
 
 }
 
-module.exports = { newAccount }
+module.exports = { newUser }

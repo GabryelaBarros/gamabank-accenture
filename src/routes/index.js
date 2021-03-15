@@ -6,7 +6,7 @@ const usercontroller = require('../api/controllers/user.controller')
 const root = {
     method: 'GET',
     path: '/',
-    handler: status
+    handler: status 
 }
 
 const login = {
@@ -21,11 +21,11 @@ const validate = {
     handler: authcontroller.validate
 }
 
-const newaccount = {
+const newuser = {
     method: 'POST',
     path: '/signup',
-    handler: usercontroller.newAccount
+    handler: usercontroller.newUser //colocar novas rotas para validação de cpf e de senha?
 }
 
 
-module.exports = [ root, login, validate, newaccount ]
+module.exports = [ root, login, validate, newuser ]

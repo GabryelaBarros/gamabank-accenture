@@ -2,19 +2,24 @@ const repository = require('../repository/user.repository')
 const PasswordLengthException = require('../../helpers/expections/passwordlength.exception')
 const CPF = require('cpf')
 const InvalidCpfException = require('../../helpers/expections/invalidcpf.exception')
+const service = require('./bank.account.service')
 
-const createAccount = async (newUser) => {
+
+const createUser = async (newUser) => {
     validateUserPassword(newUser)
 
     validateUserCpf(newUser)
 
     const findNewUser = await repository.find(newUser)
-    if (findNewUser.length === 0) {
 
-        repository.save(newUser)
+    if (findNewUser.length === 0) {
+        const userSavedOnDb = await repository.save(newUser)
+        console.log(userSavedOnDb)
+        service.createBankAccount(userSavedOnDb.insertId)
     }
 
     const isNewUsercreated = findNewUser.length <= 0 ? true : false
+
     console.log("New User created " + isNewUsercreated)
 
     return isNewUsercreated
@@ -23,7 +28,7 @@ const createAccount = async (newUser) => {
 
 const validateUserPassword = newUser => {
     if (newUser.password.length <= 6) {
-        console.log(' invalid pass');
+        console.log('invalid pass')
         throw new PasswordLengthException()
     }
 }
@@ -31,13 +36,12 @@ const validateUserPassword = newUser => {
 const validateUserCpf = user => {
     const isValidCpf = CPF.isValid(user.cpf)
 
-    if(!isValidCpf){
+    if (!isValidCpf) {
         throw new InvalidCpfException()
     }
 
-    console.log('CPF ' + isValidCpf);
+    console.log('CPF ' + isValidCpf)
 }
 
 
-module.exports = { createAccount }
-
+module.exports = { createUser }
