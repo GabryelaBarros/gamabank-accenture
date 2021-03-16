@@ -10,21 +10,18 @@ const createUser = async (newUser) => {
 
     validateUserCpf(newUser)
 
-    const findNewUser = await repository.find(newUser)
+    const isUserInDb = await findUser(newUser)
 
-    if (findNewUser.length === 0) {
-        const userSavedOnDb = await repository.save(newUser)
+    if (isUserInDb) {
+        const userSavedOnDb = await repository.saveUser(newUser)
         console.log(userSavedOnDb)
         service.createBankAccount(userSavedOnDb.insertId)
     }
+    
+    console.log("New User created " + isUserInDb)
 
-    const isNewUsercreated = findNewUser.length <= 0 ? true : false
-
-    console.log("New User created " + isNewUsercreated)
-
-    return isNewUsercreated
+    return isUserInDb
 }
-
 
 const validateUserPassword = newUser => {
     if (newUser.password.length <= 6) {
@@ -43,5 +40,14 @@ const validateUserCpf = user => {
     console.log('CPF ' + isValidCpf)
 }
 
+ const findUser = async (newUser) => {
+    const usersFromDb = await repository.findUserByLoginOrCpf(newUser)
+
+    console.log("resultado da busca de novo usuário no banco")
+    return usersFromDb.length === 0
+}
 
 module.exports = { createUser }
+
+
+

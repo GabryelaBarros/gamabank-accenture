@@ -1,5 +1,21 @@
 const database = require('../../helpers/database')
 
+const findByCpfLogin = async (user) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            const sqlStatement = `SELECT * FROM users WHERE cpf = "${user.cpf}"` +
+            `OR login = "${user.login}";`
+            const result = await database.execute(sqlStatement)
+
+            resolve(result)
+        } catch (error) {
+            console.error(error)
+            reject(error)
+        }
+    })
+}
+
 const saveBankAccount = async (bankAccount) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -15,5 +31,5 @@ const saveBankAccount = async (bankAccount) => {
     })
 }
 
-module.exports = { saveBankAccount }
+module.exports = { findByCpfLogin, saveBankAccount }
 
