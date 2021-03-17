@@ -13,9 +13,15 @@ const createBankAccount = (userId) => {
 }
 
 
-const findAccountByUserId = (userId) =>{
-    repository.findAccountByUserId(userId)
+const findAccountByUserId = async (userId) => {
+    const [bankAccount] = await repository.findAccountByUserId(userId)
+    console.log('findAccountByUserId', bankAccount)
+    return new BankAccount(bankAccount)
 }
 
-module.exports = { createBankAccount, findAccountByUserId }
+const updateMaxCredit = async (bankAccount) =>{
+    return repository.updateMaxCredit(bankAccount)
+}
+
+module.exports = { createBankAccount, findAccountByUserId, updateMaxCredit }
 

@@ -2,57 +2,29 @@ const database = require('../../helpers/database')
 const crypto = require('../../helpers/mycrypto')
 
 const findUserByLoginOrCpf = async (user) => {
-    return new Promise(async (resolve, reject) => {
-        try {
+    const query = `SELECT * FROM users WHERE cpf = "${user.cpf}"` +
+        `OR login = "${user.login}";`
 
-            const sqlStatement = `SELECT * FROM users WHERE cpf = "${user.cpf}"` +
-                `OR login = "${user.login}";`
-            const result = await database.execute(sqlStatement)
-            
-            resolve(result)
-            console.log(result)
-        } catch (error) {
-            console.error(error)
-            reject(error)
-        }
-    })
+    return await database.executeQuery(query)
 }
 
 const saveUser = async (user) => {
-    return new Promise(async (resolve, reject) => {
-        try {
+    const encrypt = await crypto.encryptPassword(user.password, null)
+    console.log(encrypt)
+    user.salt = encrypt.salt
+    user.password = encrypt.encryptedPassword
 
-            const encrypt = await crypto.encryptPassword(user.password, null)
-            console.log(encrypt)
-            user.salt = encrypt.salt
-            user.password = encrypt.encryptedPassword
+    const query = `INSERT INTO users (name, cpf, login, password, salt)` +
+        `VALUES ("${user.name}", "${user.cpf}", "${user.login}", "${user.password}",` +
+        `"${user.salt}");`
 
-            const sqlStatement = `INSERT INTO users (name, cpf, login, password, salt)` +
-                `VALUES ("${user.name}", "${user.cpf}", "${user.login}", "${user.password}",` +
-                `"${user.salt}");`
-            const result = await database.execute(sqlStatement)
+    return await database.executeQuery(query)
 
-            resolve(result)
-        } catch (error) {
-            console.error(error)
-            reject(error)
-        }
-    })
 }
 
 const findIdByCpf = async (user) => {
-    return new Promise(async (resolve, reject) => {
-        try {
-
-            const sqlStatement = `SELECT id FROM users WHERE cpf = "${user.cpf}";`
-            const result = await database.execute(sqlStatement)
-            
-            resolve(result)
-        } catch (error) {
-            console.error(error)
-            reject(error)
-        }
-    })
+    const query = `SELECT id FROM users WHERE cpf = "${user.cpf}";`
+    return await database.executeQuery(query)
 }
 
 
