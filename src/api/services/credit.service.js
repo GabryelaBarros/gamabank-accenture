@@ -1,5 +1,6 @@
 const userService = require('./user.service')
 const bankAccountService = require('./bankaccount.service')
+const CreditNotAvailable = require('../../helpers/expections/creditnotavaliable.exception')
 
 
 const entryCreditExpense = async (creditExpense) => {
@@ -7,26 +8,20 @@ const entryCreditExpense = async (creditExpense) => {
 
     const bankAccount = await bankAccountService.findAccountByUserId(userId)
 
-    if (bankAccount.maxCredit > creditExpense.value) {
-        bankAccount.maxCredit -= creditExpense.value
-
-        console.log(' conta pos operacao' , bankAccount)
-        bankAccountService.updateMaxCredit(bankAccount)
-    }
+    return processCreditExpense(bankAccount, creditExpense)
 
 }
 
-// const verifyCreditBalance = (expense) =>{
-//    const result = repository.verifyCreditBalancea
-//    if(result > expense){
-//        updatdeCreditBalance()
-//    }
-// }
+const processCreditExpense = async (bankAccount, creditExpense) => {
+    if (bankAccount.maxCredit < creditExpense.value) {
+        throw new CreditNotAvailable()
+    }
 
+    bankAccount.maxCredit -= creditExpense.value
 
-// const updatdeCreditBalance = (expense) => {
-//     accountService
-// }
-
+    console.log(' conta pos operacao', bankAccount)
+    bankAccountService.updateMaxCredit(bankAccount)
+}
 
 module.exports = { entryCreditExpense }
+
