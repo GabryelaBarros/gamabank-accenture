@@ -31,5 +31,19 @@ const saveBankAccount = async (bankAccount) => {
     })
 }
 
+const updateBalance = async (bankAccount) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const sqlStatement = `UPDATE bankaccount SET balance=${bankAccount.balance} WHERE user=${bankAccount.userId}` 
+            const result = await database.execute(sqlStatement)
+
+            resolve(result)
+        } catch (error) {
+            console.error(error)
+            reject(error)
+        }
+    })
+}
+
 module.exports = { findByCpfLogin, saveBankAccount }
 

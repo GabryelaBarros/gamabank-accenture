@@ -21,7 +21,6 @@ const validate = async (request, h) => {
     }
 }
 
-
 module.exports = {
     login, validate
 }
