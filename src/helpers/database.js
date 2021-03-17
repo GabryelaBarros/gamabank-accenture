@@ -10,6 +10,18 @@ const connectionPool = mysql.createPool({
     port: database.port
 })
 
+
+const executeQuery = (sqlStatement) => new Promise(async (resolve, reject) => {
+    try {
+        const result = await execute(sqlStatement)
+
+        resolve(result)
+    } catch (error) {
+        console.error(error)
+        reject(error)
+    }
+})
+
 const execute = (sqlStatement) => {
     return new Promise((resolve, reject) => {
         connectionPool.query(sqlStatement, (err, result) => {
@@ -19,4 +31,4 @@ const execute = (sqlStatement) => {
     })
 }
 
-module.exports = { execute }
+module.exports = { executeQuery }
