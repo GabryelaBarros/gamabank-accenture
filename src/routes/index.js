@@ -5,6 +5,7 @@ const userController = require('../api/controllers/user.controller')
 const expenseController = require('../api/controllers/expenses.controller')
 const invoiceController = require('../api/controllers/invoice.controller')
 const statementController = require('../api/controllers/statement.controller')
+const transactionController = require('../api/controllers/transaction.controller')
 
 const ApiDocs = require('./apidocs')
 
@@ -63,4 +64,10 @@ const statement = {
     options: ApiDocs.statement
 }
 
-module.exports = [root, login, validate, newuser, expenses, invoice, statement]
+const transfer ={
+    method: 'PUT',
+    path:'/transaction',
+    handler: transactionController.newTransaction
+}
+
+module.exports = [root, login, validate, newuser, expenses, invoice, statement, transfer]
