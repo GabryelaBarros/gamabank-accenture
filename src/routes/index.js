@@ -1,7 +1,8 @@
 
 const { status } = require('../api/controllers/app.controller')
-const authcontroller = require('../api/controllers/auth.controller')
-const usercontroller = require('../api/controllers/user.controller')
+const authController = require('../api/controllers/auth.controller')
+const userController = require('../api/controllers/user.controller')
+const creditController = require('../api/controllers/credit.controller') 
 
 const root = {
     method: 'GET',
@@ -12,20 +13,26 @@ const root = {
 const login = {
     method: 'POST',
     path: '/login',
-    handler: authcontroller.login
+    handler: authController.login
 }
 
 const validate = {
     method: 'GET',
     path: '/login/verify',
-    handler: authcontroller.validate
+    handler: authController.validate
 }
 
 const newuser = {
     method: 'POST',
     path: '/signup',
-    handler: usercontroller.newUser //colocar novas rotas para validação de cpf e de senha?
+    handler: userController.newUser //colocar novas rotas para validação de cpf e de senha?
+}
+
+const credit = {
+    method: 'POST',
+    path: '/credit/expense',
+    handler: creditController.creditExpense //verificar se o nome tá bom
 }
 
 
-module.exports = [ root, login, validate, newuser ]
+module.exports = [ root, login, validate, newuser, credit ]

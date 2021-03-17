@@ -1,26 +1,10 @@
 const database = require('../../helpers/database')
 
-const findByCpfLogin = async (user) => {
-    return new Promise(async (resolve, reject) => {
-        try {
-
-            const sqlStatement = `SELECT * FROM users WHERE cpf = "${user.cpf}"` +
-            `OR login = "${user.login}";`
-            const result = await database.execute(sqlStatement)
-
-            resolve(result)
-        } catch (error) {
-            console.error(error)
-            reject(error)
-        }
-    })
-}
-
 const saveBankAccount = async (bankAccount) => {
     return new Promise(async (resolve, reject) => {
         try {
-            const sqlStatement = `INSERT INTO bankAccount (balance, credit, receipt, user)` +
-                `VALUES (${bankAccount.balance}, ${bankAccount.credit}, ${bankAccount.receipt}, ${bankAccount.userId})`
+            const sqlStatement = `INSERT INTO bankAccount (balance, maxCredit, invoicePostings, userId)` +
+                `VALUES (${bankAccount.balance}, ${bankAccount.maxCredit}, ${bankAccount.invoicePostings}, ${bankAccount.userId})`
             const result = await database.execute(sqlStatement)
 
             resolve(result)
@@ -31,5 +15,19 @@ const saveBankAccount = async (bankAccount) => {
     })
 }
 
-module.exports = { findByCpfLogin, saveBankAccount }
+const findAccountByUserId = async (userId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const sqlStatement = `SELECT * FROM bankAccount WHERE bankAccount.userId = ${userId}`
+            const result = await database.execute(sqlStatement)
+
+            resolve(result)
+        } catch (error) {
+            console.error(error)
+            reject(error)
+        }
+    })
+}
+
+module.exports = { saveBankAccount, findAccountByUserId }
 

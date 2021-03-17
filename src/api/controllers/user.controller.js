@@ -8,7 +8,7 @@ const newUser = async (request, h) => {
 
     console.log(user)
 
-    let newCreateUser//mudar depóis
+    let newCreateUser//mudar depois
     
     try {
         newCreateUser = await service.createUser(user)
@@ -27,7 +27,7 @@ const newUser = async (request, h) => {
     } else {
         return h.response({
             message: 'o usuário já está cadastrado'
-        }).code(409) // ver se o erro é o certo
+        }).code(409)
     }
 
 }

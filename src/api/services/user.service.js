@@ -1,8 +1,8 @@
 const repository = require('../repository/user.repository')
-const PasswordLengthException = require('../../helpers/expections/passwordlength.exception')
+const PasswordLengthException = require('../../helpers/expections/password.exception')
 const CPF = require('cpf')
 const InvalidCpfException = require('../../helpers/expections/invalidcpf.exception')
-const service = require('./bank.account.service')
+const bankAccountService = require('./bankaccount.service')
 
 
 const createUser = async (newUser) => {
@@ -10,14 +10,14 @@ const createUser = async (newUser) => {
 
     validateUserCpf(newUser)
 
-    const isUserInDb = await findUser(newUser)
+    const isUserInDb = await findUserByLoginOrCpf(newUser)
 
     if (isUserInDb) {
         const userSavedOnDb = await repository.saveUser(newUser)
         console.log(userSavedOnDb)
-        service.createBankAccount(userSavedOnDb.insertId)
+        bankAccountService.createBankAccount(userSavedOnDb.insertId)
     }
-    
+
     console.log("New User created " + isUserInDb)
 
     return isUserInDb
@@ -40,14 +40,17 @@ const validateUserCpf = user => {
     console.log('CPF ' + isValidCpf)
 }
 
- const findUser = async (newUser) => {
-    const usersFromDb = await repository.findUserByLoginOrCpf(newUser)
+const findUserByLoginOrCpf = async (user) => {
+    const usersFromDb = await repository.findUserByLoginOrCpf(user)
 
     console.log("resultado da busca de novo usuário no banco")
     return usersFromDb.length === 0
 }
 
-module.exports = { createUser }
+const findIdByCpf = async (user) => {
+    const [userId] = await repository.findIdByCpf(user)
+    return userId.id
 
+}
 
-
+module.exports = { createUser, findUserByLoginOrCpf, findIdByCpf }

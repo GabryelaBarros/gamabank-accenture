@@ -40,4 +40,20 @@ const saveUser = async (user) => {
     })
 }
 
-module.exports = { findUserByLoginOrCpf, saveUser }
+const findIdByCpf = async (user) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            const sqlStatement = `SELECT id FROM users WHERE cpf = "${user.cpf}";`
+            const result = await database.execute(sqlStatement)
+            
+            resolve(result)
+        } catch (error) {
+            console.error(error)
+            reject(error)
+        }
+    })
+}
+
+
+module.exports = { findUserByLoginOrCpf, saveUser, findIdByCpf }

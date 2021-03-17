@@ -1,6 +1,6 @@
 
 const BankAccount = require('../models/bank.account')
-const repository = require('../repository/bank.account.repository')
+const repository = require('../repository/bankaccount.repository')
 
 
 const createBankAccount = (userId) => {
@@ -12,5 +12,10 @@ const createBankAccount = (userId) => {
     console.log(' BANK ACCOUNT CREATED', bankAccountCreated)
 }
 
-module.exports = { createBankAccount }
+
+const findAccountByUserId = (userId) =>{
+    repository.findAccountByUserId(userId)
+}
+
+module.exports = { createBankAccount, findAccountByUserId }
 
