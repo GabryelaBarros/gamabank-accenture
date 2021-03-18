@@ -1,5 +1,5 @@
 
-const BankAccount = require('../models/bank.account')
+const BankAccount = require('../models/bankAccount')
 const repository = require('../repository/bankaccount.repository')
 
 
