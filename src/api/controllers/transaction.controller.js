@@ -1,11 +1,11 @@
-const service = require('../services/user.service')
+const service = require('../services/transaction.service')
 
 
 const  newTransaction = async (request, res) => {
-    console.log("qualquer coisa")
+    service.makeTransaction(request.payload)
     return res.response({
-        message: 'meu momo'
-    }).code(409) 
+        message: 'teste newTransaction Controller'
+    }).code(200) 
 }
 
 module.exports = {newTransaction}

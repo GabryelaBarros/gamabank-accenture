@@ -64,10 +64,10 @@ const statement = {
     options: ApiDocs.statement
 }
 
-const transfer ={
+const transaction ={
     method: 'PUT',
     path:'/transaction',
     handler: transactionController.newTransaction
 }
 
-module.exports = [root, login, validate, newuser, expenses, invoice, statement, transfer]
+module.exports = [root, login, validate, newuser, expenses, invoice, statement, transaction]

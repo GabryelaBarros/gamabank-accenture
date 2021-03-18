@@ -17,6 +17,12 @@ const updateCreditBalanceAvailable = async (bankAccount) => {
     const query = `UPDATE bankAccount SET ` +
         `creditBalanceAvailable = ${bankAccount.creditBalanceAvailable} ` +
         `WHERE cc = ${bankAccount.cc};`
+    return await database.executeQuery(query)
+} 
+      
+const findAccountByUserId = async (userId) => {
+    const query = `SELECT * FROM bankAccount `+
+        `WHERE bankAccount.userId = ${userId};`
 
     return await database.executeQuery(query)
 }
@@ -37,24 +43,14 @@ const findAccountByCc = async (cc) => {
     return dataFromDb
 }
 const updateBalance = async (bankAccount) => {
-    return new Promise(async (resolve, reject) => {
-        try {
-            const sqlStatement = `UPDATE bankaccount SET balance=${bankAccount.balance} WHERE user=${bankAccount.userId}` 
-            const result = await database.execute(sqlStatement)
-
-            resolve(result)
-        } catch (error) {
-            console.error(error)
-            reject(error)
-        }
-    })
+    const query = `UPDATE bankaccount SET balance = balance + ${bankAccount.balance} WHERE userId=${bankAccount.userId};`
+    return await database.executeQuery(query)
 }
-
-module.exports = { saveBankAccount, findAccountByUserId, updateMaxCredit }
 
 module.exports = {
     saveBankAccount,
     updateCreditBalanceAvailable,
     findAccountByCc,
-    updateBalance
+    updateBalance,
+    findAccountByUserId
 }

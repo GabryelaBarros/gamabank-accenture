@@ -42,6 +42,10 @@ const validateCc = async (cc) => {
     return await findAccountByCc(cc)
 }
 
+const updateBalance = async (bankAccount) =>{
+    return repository.updateBalance(bankAccount)
+}
+
 module.exports = {
     createBankAccount,
     updateCreditBalanceAvailable,
