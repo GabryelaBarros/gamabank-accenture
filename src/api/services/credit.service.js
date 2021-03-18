@@ -36,7 +36,7 @@ const processCreditExpense = async (bankAccount, value) => {
 }
 
 const registarCompraCredito = async (creditExpense) => {
-    const [compraRegistrada] = await creditRepository.inserirComprarCredito(creditExpense)
+    const compraRegistrada = await creditRepository.inserirComprarCredito(creditExpense)
     return compraRegistrada
 }
 
