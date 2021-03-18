@@ -13,26 +13,24 @@ const entryCreditExpense = async (creditExpense) => {
     registarCompraCredito(creditExpense)
     // const userId = await userService.findIdByCpf({ cpf: creditExpense.cpf })
 
-    //TODO MUDAR PARA PESQAUISA POR CC
     //const bankAccount = await bankAccountService.findAccountByUserId(cc)
-
-
 
     //return processCreditExpense(bankAccount, creditExpense)
 
 }
+
 //VERIFICAR SE TEM LIMITE DISPONÍVEL
 const processCreditExpense = async (bankAccount, value) => {
 
-    //TODO creditBalanceAvailable
+    
     if (bankAccount.creditBalanceAvailable < value) {
         throw new CreditNotAvailable()
     }
-    //MUDOU PARA REGISTRAR COMPRA CREDITO
-    // bankAccount.creditBalanceAvailable -= creditExpense.creditExpenseValue
+  
+    bankAccount.creditBalanceAvailable -= value
 
-    // console.log(' conta pos operacao', bankAccount)
-    // bankAccountService.updateMaxCredit(bankAccount)
+    console.log(' conta pos operacao', bankAccount)
+    bankAccountService.updateCreditBalanceAvailable(bankAccount)
 }
 
 const registarCompraCredito = async (creditExpense) => {

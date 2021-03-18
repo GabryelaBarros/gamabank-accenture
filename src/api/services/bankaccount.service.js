@@ -1,5 +1,5 @@
 
-const BankAccount = require('../models/bank.account')
+const BankAccount = require('../models/bankaccount')
 const repository = require('../repository/bankaccount.repository')
 
 const INITIAL_BANKACCOUNT_CREDIT = 200
@@ -12,8 +12,11 @@ const createBankAccount = (userId) => {
         balance: INITIAL_BALANCE,
         maxCredit: INITIAL_BANKACCOUNT_CREDIT,
         creditBalanceAvailable: INITIAL_BANKACCOUNT_CREDIT,
-        faturaParcial: INITIAL_BALANCE 
+        invoice: INITIAL_BALANCE
     })
+
+    calculateInvoice(bankAccountCreated.maxCredit,
+        bankAccountCreated.creditBalanceAvailable)
 
     repository.saveBankAccount(bankAccountCreated)
     console.log(' BANK ACCOUNT CREATED', bankAccountCreated)
@@ -25,8 +28,8 @@ const createBankAccount = (userId) => {
 //     return new BankAccount(bankAccount)
 // }
 
-const updateMaxCredit = async (bankAccount) => {
-    return repository.updateMaxCredit(bankAccount)
+const updateCreditBalanceAvailable = async (bankAccount) => {
+    return repository.updateCreditBalanceAvailable(bankAccount)
 }
 
 
@@ -36,4 +39,10 @@ const findAccountByCc = async (cc) => {
     return new BankAccount(bankAccount)
 }
 
-module.exports = { createBankAccount, updateMaxCredit, findAccountByCc }
+const calculateInvoice = async (maxCredit, creditBalanceAvailable) => {
+    const invoice = maxCredit - creditBalanceAvailable
+    console.log('FATURA PENDENTE PARA PAGAMENTO: ', invoice)
+    return invoice
+}
+
+module.exports = { createBankAccount, updateCreditBalanceAvailable, findAccountByCc }
