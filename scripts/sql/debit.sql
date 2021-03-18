@@ -1,6 +1,6 @@
 CREATE TABLE debitThrowing (
-  userId int PRIMARY KEY,
+  cc int PRIMARY KEY,
   extractRelease DOUBLE,
   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (userId) REFERENCES users(id)
+  FOREIGN KEY (cc) REFERENCES bank.account(cc)
   );

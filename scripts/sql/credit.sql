@@ -1,6 +1,6 @@
 CREATE TABLE creditThrowing (
-  userId int PRIMARY KEY,
+  cc int PRIMARY KEY,
   invoicePostings DOUBLE,
   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (userId) REFERENCES users(id)
+  FOREIGN KEY (cc) REFERENCES bank.account(cc)
   );
