@@ -47,10 +47,10 @@ const findUserByLoginOrCpf = async (user) => {
     return usersFromDb.length === 0
 }
 
-const findIdByCpf = async (user) => {
-    const [userId] = await repository.findIdByCpf(user)
-    return userId.id
+// const findIdByCpf = async (user) => {
+//     const [userId] = await repository.findIdByCpf(user)
+//     return userId.id
 
-}
+// }
 
-module.exports = { createUser, findUserByLoginOrCpf, findIdByCpf }
+module.exports = { createUser, findUserByLoginOrCpf }

@@ -21,5 +21,11 @@ const updateMaxCredit = async (bankAccount) =>{
 
 }
 
-module.exports = { saveBankAccount, findAccountByUserId, updateMaxCredit }
+const findAccountByCc = async (cc) => {
+    const query = `SELECT * FROM bankAccount `+
+            `WHERE cc = ${cc};`
 
+    return await database.executeQuery(query)
+}
+
+module.exports = { saveBankAccount, findAccountByUserId, updateMaxCredit, findAccountByCc }

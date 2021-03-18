@@ -1,6 +1,6 @@
 class CreditExpense {
-    constructor({ cpf, value }) {
-        this.cpf = cpf
+    constructor({ cc, value }) {
+        this.cc = cc
         this.value = value
     }
 }   

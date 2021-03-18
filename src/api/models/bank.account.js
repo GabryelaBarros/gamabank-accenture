@@ -1,11 +1,11 @@
 class BankAccount {
-    constructor({ cc, userId, balance, maxCredit, extractRelease, invoicePostings }) {
+    constructor({ cc, userId, balance, maxCredit, creditBalanceAvailable, faturaParcial }) {
         this.cc = cc
         this.userId = userId
         this.balance = balance
         this.maxCredit = maxCredit
-        this.extractRelease = extractRelease
-        this.invoicePostings = invoicePostings
+        this.creditBalanceAvailable = creditBalanceAvailable
+        this.faturaParcial = faturaParcial
     }
 }
 
