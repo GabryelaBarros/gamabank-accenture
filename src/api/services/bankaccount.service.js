@@ -23,5 +23,9 @@ const updateMaxCredit = async (bankAccount) =>{
     return repository.updateMaxCredit(bankAccount)
 }
 
-module.exports = { createBankAccount, findAccountByUserId, updateMaxCredit }
+const updateBalance = async (bankAccount) =>{
+    return repository.updateBalance(bankAccount)
+}
+
+module.exports = { createBankAccount, findAccountByUserId, updateMaxCredit, updateBalance}
 

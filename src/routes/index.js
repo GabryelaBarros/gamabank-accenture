@@ -37,11 +37,11 @@ const credit = {
     handler: creditController.creditExpense //verificar se o nome tá bom
 }
 
-const transfer ={
+const transaction ={
     method: 'PUT',
     path:'/transaction',
     handler: transactionController.newTransaction
 }
 
 
-module.exports = [ root, login, validate, newuser, credit , transfer]
+module.exports = [ root, login, validate, newuser, credit , transaction]
