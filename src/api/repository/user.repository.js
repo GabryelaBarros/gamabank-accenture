@@ -27,5 +27,4 @@ const findIdByCpf = async (user) => {
     return await database.executeQuery(query)
 }
 
-
 module.exports = { findUserByLoginOrCpf, saveUser, findIdByCpf }

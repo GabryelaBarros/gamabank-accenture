@@ -25,14 +25,14 @@ const validate = {
 const newuser = {
     method: 'POST',
     path: '/signup',
-    handler: userController.newUser //colocar novas rotas para validação de cpf e de senha?
+    handler: userController.newUser //TODO colocar novas rotas para validação de cpf e de senha?
 }
 
+//TODO autenticar essa rota
 const credit = {
     method: 'POST',
     path: '/credit/expense',
-    handler: creditController.creditExpense //verificar se o nome tá bom
+    handler: creditController.creditExpense //TODO verificar se o nome tá bom
 }
-
 
 module.exports = [ root, login, validate, newuser, credit ]

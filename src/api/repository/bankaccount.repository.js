@@ -22,4 +22,3 @@ const updateMaxCredit = async (bankAccount) =>{
 }
 
 module.exports = { saveBankAccount, findAccountByUserId, updateMaxCredit }
-
