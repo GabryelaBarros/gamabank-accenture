@@ -40,6 +40,5 @@ const registarCompraCredito = async (creditExpense) => {
     return compraRegistrada
 }
 
-
 module.exports = { entryCreditExpense }
 

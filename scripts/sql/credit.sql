@@ -1,5 +1,6 @@
 CREATE TABLE credit(
-  cc int PRIMARY KEY,
+  id int PRIMARY KEY AUTO_INCREMENT,
+  cc INT(7),
   creditExpenseValue DOUBLE,
   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (cc) REFERENCES bankAccount(cc)
