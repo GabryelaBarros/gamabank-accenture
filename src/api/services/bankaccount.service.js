@@ -1,11 +1,11 @@
 
 const BankAccount = require('../models/bankaccount')
-const repository = require('../repository/bankaccount.repository')
+const bankAccountRepository = require('../repository/bankaccount.repository')
 
 const INITIAL_BANKACCOUNT_CREDIT = 200
 const INITIAL_BALANCE = 0
 
-const createBankAccount = (userId) => {
+const createBankAccount = async (userId) => {
     console.log(' USER ID ', userId)
     const bankAccountCreated = new BankAccount({
         userId,
@@ -14,16 +14,16 @@ const createBankAccount = (userId) => {
         creditBalanceAvailable: INITIAL_BANKACCOUNT_CREDIT
     })
 
-    repository.saveBankAccount(bankAccountCreated)
+    await bankAccountRepository.saveBankAccount(bankAccountCreated)
     console.log(' BANK ACCOUNT CREATED', bankAccountCreated)
 }
 
 const updateCreditBalanceAvailable = async (bankAccount) => {
-    return repository.updateCreditBalanceAvailable(bankAccount)
+    return await bankAccountRepository.updateCreditBalanceAvailable(bankAccount)
 }
 
 const findAccountByCc = async (cc) => {
-    const [bankAccount] = await repository.findAccountByCc(cc)
+    const [bankAccount] = await bankAccountRepository.findAccountByCc(cc)
     console.log('findAccountByCc', bankAccount)
     return new BankAccount(bankAccount)
 }

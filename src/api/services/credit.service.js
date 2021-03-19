@@ -5,9 +5,9 @@ const creditRepository = require('../repository/credit.repository')
 const entryCreditExpense = async (creditExpense) => {
     const bankAccount = await bankAccountService.findAccountByCc(creditExpense.cc)
 
-    processCreditExpense(bankAccount, creditExpense.value)
+    await processCreditExpense(bankAccount, creditExpense.value)
 
-    createCreditExpense(creditExpense)
+    await createCreditExpense(creditExpense)
 
 }
 
@@ -19,12 +19,12 @@ const processCreditExpense = async (bankAccount, expenseValue) => {
     bankAccount.creditBalanceAvailable -= expenseValue
 
     console.log(' conta pos operacao', bankAccount)
-    bankAccountService.updateCreditBalanceAvailable(bankAccount)
+    await bankAccountService.updateCreditBalanceAvailable(bankAccount)
 }
 
 const createCreditExpense = async (creditExpense) => {
-    const compraRegistrada = await creditRepository.createCreditExpense(creditExpense)
-    return compraRegistrada
+    const createdExpense = await creditRepository.createCreditExpense(creditExpense)
+    return createdExpense
 }
 
 // const listarComprasCredito = async (cc) => {

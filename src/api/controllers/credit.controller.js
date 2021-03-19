@@ -8,9 +8,7 @@ const creditExpense = async (request, h) => {
 
     try {
         await service.entryCreditExpense(creditExpense)
-        
     } catch (exception) {
-        console.log(exception)
         return h.response({
             message: exception.message
         }).code(exception.status)

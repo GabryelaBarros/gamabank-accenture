@@ -8,5 +8,4 @@ class CreditNotAvailable extends Error {
     }
 }
 
-
 module.exports = CreditNotAvailable

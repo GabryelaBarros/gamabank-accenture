@@ -35,5 +35,4 @@ const credit = {
     handler: creditController.creditExpense //TODO verificar se o nome tá bom
 }
 
-
 module.exports = [root, login, validate, newuser, credit]

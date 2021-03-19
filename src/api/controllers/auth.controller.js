@@ -5,13 +5,13 @@ const login = async (request, h) => {
 
     //TODO: Refatorar
     const { username, password } = request.payload
-    return await service.sign({username, password})
+    return await service.sign({ username, password })
 
 }
 
 const validate = async (request, h) => {
     const token = request.headers['x-access-token']
-    if(!token) return { auth: false, message: 'No token provided'}   
+    if (!token) return { auth: false, message: 'No token provided' }
 
     try {
         const result = await service.verify(token) //isso é pra ficar dentro do arquivo de auth service? 
@@ -21,7 +21,4 @@ const validate = async (request, h) => {
     }
 }
 
-
-module.exports = {
-    login, validate
-}
+module.exports = { login, validate }
