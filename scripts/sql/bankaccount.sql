@@ -4,7 +4,6 @@ CREATE TABLE bankAccount (
   balance DOUBLE,
   creditBalanceAvailable DOUBLE,
   maxCredit DOUBLE,
-  invoice DOUBLE,
   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (userId) REFERENCES users(id)
   );

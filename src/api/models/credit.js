@@ -3,6 +3,6 @@ class CreditExpense {
         this.cc = cc
         this.value = value
     }
-}   
+}
 
 module.exports = CreditExpense

@@ -1,10 +1,16 @@
 const database = require('../../helpers/database')
 
-const inserirComprarCredito = async (creditExpense) => {
-    const query = `INSERT INTO credit (cc, creditExpenseValue) ` +
-    `VALUES (${creditExpense.cc}, ${creditExpense.value});`
+const createCreditExpense = async (creditExpense) => {
+    const query = `INSERT INTO credit (cc, value) ` +
+        `VALUES (${creditExpense.cc}, ${creditExpense.value});`
 
     return await database.executeQuery(query)
 }
 
-module.exports = { inserirComprarCredito }
+// const listarComprasCredito = async (cc) => {
+//     const query = `SELECT * FROM credit` +
+//         ` WHERE cc = ${cc} ` +
+//         `ORDER BY created_at DESC`
+// }
+
+module.exports = { createCreditExpense }

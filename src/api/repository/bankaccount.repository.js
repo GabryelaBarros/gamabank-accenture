@@ -2,12 +2,11 @@ const database = require('../../helpers/database')
 
 const saveBankAccount = async (bankAccount) => {
     const query = `INSERT INTO bankAccount ` +
-        `(balance, maxCredit, creditBalanceAvailable, invoice, userId) ` +
+        `(balance, maxCredit, creditBalanceAvailable, userId) ` +
         `VALUES (` +
         `${bankAccount.balance},` +
         `${bankAccount.maxCredit},` +
         `${bankAccount.creditBalanceAvailable},` +
-        `${bankAccount.invoice},` +
         `${bankAccount.userId});`
 
     return await database.executeQuery(query)

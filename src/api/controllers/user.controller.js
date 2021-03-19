@@ -8,7 +8,7 @@ const newUser = async (request, h) => {
 
     console.log(user)
 
-    let newCreateUser//mudar depois
+    let newCreateUser
     
     try {
         newCreateUser = await service.createUser(user)

@@ -2,12 +2,12 @@
 const { status } = require('../api/controllers/app.controller')
 const authController = require('../api/controllers/auth.controller')
 const userController = require('../api/controllers/user.controller')
-const creditController = require('../api/controllers/credit.controller') 
+const creditController = require('../api/controllers/credit.controller')
 
 const root = {
     method: 'GET',
     path: '/',
-    handler: status 
+    handler: status
 }
 
 const login = {
@@ -35,4 +35,4 @@ const credit = {
 }
 
 
-module.exports = [ root, login, validate, newuser, credit ]
+module.exports = [root, login, validate, newuser, credit]
