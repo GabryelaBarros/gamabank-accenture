@@ -1,27 +1,36 @@
-const userService = require('./user.service')
 const bankAccountService = require('./bankaccount.service')
 const CreditNotAvailable = require('../../helpers/expections/creditnotavaliable.exception')
-
+const creditRepository = require('../repository/credit.repository')
 
 const entryCreditExpense = async (creditExpense) => {
-    const userId = await userService.findIdByCpf({ cpf: creditExpense.cpf })
+    const bankAccount = await bankAccountService.findAccountByCc(creditExpense.cc)
 
-    const bankAccount = await bankAccountService.findAccountByUserId(userId)
+    processCreditExpense(bankAccount, creditExpense.value)
 
-    return processCreditExpense(bankAccount, creditExpense)
+    createCreditExpense(creditExpense)
 
 }
 
-const processCreditExpense = async (bankAccount, creditExpense) => {
-    if (bankAccount.maxCredit < creditExpense.value) {
+const processCreditExpense = async (bankAccount, expenseValue) => {
+    if (bankAccount.creditBalanceAvailable < expenseValue) {
         throw new CreditNotAvailable()
     }
 
-    bankAccount.maxCredit -= creditExpense.value
+    bankAccount.creditBalanceAvailable -= expenseValue
 
     console.log(' conta pos operacao', bankAccount)
-    bankAccountService.updateMaxCredit(bankAccount)
+    bankAccountService.updateCreditBalanceAvailable(bankAccount)
 }
 
-module.exports = { entryCreditExpense }
+const createCreditExpense = async (creditExpense) => {
+    const compraRegistrada = await creditRepository.createCreditExpense(creditExpense)
+    return compraRegistrada
+}
 
+// const listarComprasCredito = async (cc) => {
+//     const listaDeCompras = await creditRepository.listarComprasCredito(cc)
+//     return listaDeCompras
+
+// }
+
+module.exports = { entryCreditExpense }

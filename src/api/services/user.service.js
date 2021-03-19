@@ -43,14 +43,8 @@ const validateUserCpf = user => {
 const findUserByLoginOrCpf = async (user) => {
     const usersFromDb = await repository.findUserByLoginOrCpf(user)
 
-    console.log("resultado da busca de novo usuário no banco")
+    console.log("result of searching for new user in DB")
     return usersFromDb.length === 0
 }
 
-const findIdByCpf = async (user) => {
-    const [userId] = await repository.findIdByCpf(user)
-    return userId.id
-
-}
-
-module.exports = { createUser, findUserByLoginOrCpf, findIdByCpf }
+module.exports = { createUser, findUserByLoginOrCpf }
