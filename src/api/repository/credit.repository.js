@@ -7,10 +7,12 @@ const createCreditExpense = async (creditExpense) => {
     return await database.executeQuery(query)
 }
 
-// const listarComprasCredito = async (cc) => {
-//     const query = `SELECT * FROM credit` +
-//         ` WHERE cc = ${cc} ` +
-//         `ORDER BY created_at DESC`
-// }
+const listCreditExpenses = async (cc) => {
+    const query = `SELECT value, created_at ` +
+        `FROM credit` +
+        ` WHERE cc = ${cc} ` +
+        `ORDER BY created_at DESC`
+    return await database.executeQuery(query)
+}
 
-module.exports = { createCreditExpense }
+module.exports = { createCreditExpense, listCreditExpenses }

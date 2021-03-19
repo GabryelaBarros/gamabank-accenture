@@ -1,5 +1,5 @@
 const CreditExpense = require('../models/credit')
-const service = require('../services/credit.service')
+const creditService = require('../services/credit.service')
 
 const creditExpense = async (request, h) => {
 
@@ -7,7 +7,7 @@ const creditExpense = async (request, h) => {
     console.log(creditExpense)
 
     try {
-        await service.entryCreditExpense(creditExpense)
+        await creditService.entryCreditExpense(creditExpense)
     } catch (exception) {
         return h.response({
             message: exception.message

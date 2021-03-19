@@ -27,10 +27,10 @@ const createCreditExpense = async (creditExpense) => {
     return createdExpense
 }
 
-// const listarComprasCredito = async (cc) => {
-//     const listaDeCompras = await creditRepository.listarComprasCredito(cc)
-//     return listaDeCompras
+const listCreditExpenses = async (cc) => {
+    
+    const expenses = await creditRepository.listCreditExpenses(cc)
+    return expenses
+}
 
-// }
-
-module.exports = { entryCreditExpense }
+module.exports = { entryCreditExpense, listCreditExpenses }
