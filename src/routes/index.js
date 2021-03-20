@@ -1,6 +1,5 @@
 
 const { status } = require('../api/controllers/app.controller')
-
 const authController = require('../api/controllers/auth.controller')
 const userController = require('../api/controllers/user.controller')
 const creditController = require('../api/controllers/credit.controller') 

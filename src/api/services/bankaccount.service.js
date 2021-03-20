@@ -1,5 +1,5 @@
 
-const BankAccount = require('../models/bankAccount')
+const BankAccount = require('../models/bank.account')
 const repository = require('../repository/bankaccount.repository')
 
 
@@ -16,7 +16,12 @@ const createBankAccount = (userId) => {
 const findAccountByUserId = async (userId) => {
     const [bankAccount] = await repository.findAccountByUserId(userId)
     console.log('findAccountByUserId', bankAccount)
-    return new BankAccount(bankAccount)
+    if (bankAccount === undefined){
+        return null
+    }
+    else{
+        return new BankAccount(bankAccount)
+    }
 }
 
 const updateMaxCredit = async (bankAccount) =>{
