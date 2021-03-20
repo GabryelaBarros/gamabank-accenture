@@ -5,9 +5,9 @@ const pendingInvoice = async (request, h) => {
     const cc = request.params.cc
 
     try {
-        return await invoiceService.getPendingInvoiceByCc(cc)
+        return await invoiceService.getPendingInvoiceByCc(cc, true)
     } catch (exception) {
-        console.log(exception);
+        console.log(exception)
         return h.response({
             message: exception.message
         }).code(exception.status)
