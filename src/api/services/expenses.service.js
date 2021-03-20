@@ -18,7 +18,7 @@ const processExpense = async (bankAccount, expense) => {
     if (expense.isCredit) {
         await processCreditExpense(bankAccount, expense)
     } else {
-        
+
         await processDebitExpense(bankAccount, expense)
     }
 }
