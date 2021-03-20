@@ -39,7 +39,6 @@ const findAccountByCc = async (cc) => {
 
 module.exports = {
     saveBankAccount,
-    findAccountByUserId,
     updateCreditBalanceAvailable,
     findAccountByCc,
     updateBalance

@@ -46,4 +46,4 @@ const findUserByLoginOrCpf = async (user) => {
     return usersFromDb.length === 0
 }
 
-module.exports = { createUser, findUserByLoginOrCpf }
+module.exports = { createUser, findUserByLoginOrCpf, validateUserPassword, validateUserCpf }

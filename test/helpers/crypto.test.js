@@ -1,20 +1,18 @@
-const assert = require('chai').assert
 const faker = require('faker')
 
 const mycrypto = require('../../src/helpers/mycrypto')
 
 
 describe('Crypto Helper Tool', () => {
-
-    it('should be encrypt password', async () =>{
+    it('should be encrypt password', async () => {
 
         const pass = 'I0yk0w04WYaFsZ_myIHgqz6NIYliCNiF'
         const expectedEncryptedPassword = '$2b$10$CFhxPbcy0Glrjq0/LPJn5.HaOYKSzAQXXnQetkW746RrKMz1jkPm2'
         const salt = '$2b$10$CFhxPbcy0Glrjq0/LPJn5.'
 
-        const { encryptedPassword }  = await mycrypto.encryptPassword(pass, salt)
-        assert.equal(encryptedPassword, expectedEncryptedPassword)
+        const { encryptedPassword } = await mycrypto.encryptPassword(pass, salt)
 
+        expect(encryptedPassword).toBe(expectedEncryptedPassword)
     })
 
 
@@ -24,10 +22,8 @@ describe('Crypto Helper Tool', () => {
         const { encryptedPassword, salt } = await mycrypto.encryptPassword(password, null)
 
         const resultComparePasswords = await mycrypto.comparePassword(password, salt, encryptedPassword)
-        assert.equal(resultComparePasswords, true)
 
+        expect(resultComparePasswords).toBeTruthy()
     })
-
-
 })
 
