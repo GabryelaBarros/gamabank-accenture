@@ -30,11 +30,3 @@ npm install @hapi/inert
 ```sh
 npm install bcrypt
 ```
-<strong>npm</strong>
-```sh
-npm install
-```
-<strong>npm</strong>
-```sh
-npm install
-```
