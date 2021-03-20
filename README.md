@@ -14,7 +14,7 @@
 ## Descrição
 
 <p>
-Construção de API Backend para a fintech Gama Bank que pode ser usada em Node.js e browser.
+Construção de API Backend para a fintech Gama Bank. Linguagem `Javascript.
 </p>
 
 ## Instruções e Navegação
@@ -30,6 +30,11 @@ Abaixo estão listados os softwares utilizados na construção e execução dess
     <li>
       <a href="https://nodejs.org/en/" target="_blank">
         Node.js v.14.15
+      </a>
+    </li>
+        <li>
+      <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript" target="_blank">
+        Javascript
       </a>
     </li>
     <li>
