@@ -2,14 +2,15 @@
 const { status } = require('../api/controllers/app.controller')
 const authController = require('../api/controllers/auth.controller')
 const userController = require('../api/controllers/user.controller')
-const creditController = require('../api/controllers/credit.controller') 
-const transactionController = require('../api/controllers/transaction.controller')
 
+const transactionController = require('../api/controllers/transaction.controller')
+const creditController = require('../api/controllers/credit.controller')
+const invoiceController = require('../api/controllers/invoice.controller')
 
 const root = {
     method: 'GET',
     path: '/',
-    handler: status 
+    handler: status
 }
 
 const login = {
@@ -27,13 +28,14 @@ const validate = {
 const newuser = {
     method: 'POST',
     path: '/signup',
-    handler: userController.newUser //colocar novas rotas para validação de cpf e de senha?
+    handler: userController.newUser //TODO colocar novas rotas para validação de cpf e de senha?
 }
 
+//TODO autenticar essa rota
 const credit = {
     method: 'POST',
     path: '/credit/expense',
-    handler: creditController.creditExpense //verificar se o nome tá bom
+    handler: creditController.creditExpense //TODO verificar se o nome tá bom
 }
 
 const transaction ={
@@ -43,4 +45,10 @@ const transaction ={
 }
 
 
-module.exports = [ root, login, validate, newuser, credit , transaction]
+const invoice = {
+    method: 'GET',
+    path: '/invoice/{cc?}',
+    handler: invoiceController.pendingInvoice
+}
+
+module.exports = [root, login, validate, newuser, credit, invoice, transaction]

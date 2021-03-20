@@ -1,22 +1,29 @@
 const database = require('../../helpers/database')
 
 const saveBankAccount = async (bankAccount) => {
-    const query = `INSERT INTO bankAccount (balance, maxCredit,invoicePostings, userId)` +
-    `VALUES (${bankAccount.balance},${bankAccount.maxCredit}, ${bankAccount.invoicePostings},${bankAccount.userId});`
+    const query = `INSERT INTO bankAccount ` +
+        `(balance, maxCredit, creditBalanceAvailable, userId) ` +
+        `VALUES (` +
+        `${bankAccount.balance},` +
+        `${bankAccount.maxCredit},` +
+        `${bankAccount.creditBalanceAvailable},` +
+        `${bankAccount.userId});`
 
     return await database.executeQuery(query)
 }
-      
+
 const findAccountByUserId = async (userId) => {
-    const query = `SELECT * FROM bankAccount `+
+const query = `SELECT * FROM bankAccount ` +
+
         `WHERE bankAccount.userId = ${userId};`
 
     return await database.executeQuery(query)
 }
 
-const updateMaxCredit = async (bankAccount) =>{
-    const query = `UPDATE bankAccount SET maxCredit = ${bankAccount.maxCredit} ` +
-    `WHERE cc = ${bankAccount.cc};`
+const updateCreditBalanceAvailable = async (bankAccount) => {
+    const query = `UPDATE bankAccount SET ` +
+        `creditBalanceAvailable = ${bankAccount.creditBalanceAvailable} ` +
+        `WHERE cc = ${bankAccount.cc};`
     return await database.executeQuery(query)
 
 }
@@ -26,4 +33,11 @@ const updateBalance = async (bankAccount) => {
     return await database.executeQuery(query)
 }
 
-module.exports = { saveBankAccount, findAccountByUserId, updateMaxCredit, updateBalance }
+const findAccountByCc = async (cc) => {
+    const query = `SELECT * FROM bankAccount ` +
+        `WHERE cc = ${cc};`
+
+    return await database.executeQuery(query)
+}
+
+module.exports = { saveBankAccount, findAccountByUserId, updateCreditBalanceAvailable, findAccountByCc, updateBalance }

@@ -8,5 +8,4 @@ class PasswordLengthException extends Error {
     }
 }
 
-
 module.exports = PasswordLengthException

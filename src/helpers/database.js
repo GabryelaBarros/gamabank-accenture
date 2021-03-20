@@ -10,7 +10,6 @@ const connectionPool = mysql.createPool({
     port: database.port
 })
 
-
 const executeQuery = (sqlStatement) => new Promise(async (resolve, reject) => {
     try {
         const result = await execute(sqlStatement)

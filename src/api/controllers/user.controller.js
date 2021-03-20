@@ -1,4 +1,4 @@
-const service = require('../services/user.service')
+const userService = require('../services/user.service')
 const User = require('../models/user')
 
 
@@ -8,10 +8,10 @@ const newUser = async (request, h) => {
 
     console.log(user)
 
-    let newCreateUser//mudar depois
+    let newCreateUser
     
     try {
-        newCreateUser = await service.createUser(user)
+        newCreateUser = await userService.createUser(user)
     } catch (exception) {
         console.log(exception);
         return h.response({

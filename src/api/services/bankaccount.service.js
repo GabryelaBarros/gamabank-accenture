@@ -1,17 +1,34 @@
 
 const BankAccount = require('../models/bank.account')
-const repository = require('../repository/bankaccount.repository')
+const InvalidCcException = require('../../helpers/expections/InvalidCcException')
+const bankAccountRepository = require('../repository/bankaccount.repository')
 
+const INITIAL_BANKACCOUNT_CREDIT = 200
+const INITIAL_BALANCE = 0
 
-const createBankAccount = (userId) => {
+const createBankAccount = async (userId) => {
     console.log(' USER ID ', userId)
-    const bankAccountCreated = new BankAccount({ userId, balance: 0, maxCredit: 200, invoicePostings: 0 })
+    const bankAccountCreated = new BankAccount({
+        userId,
+        balance: INITIAL_BALANCE,
+        maxCredit: INITIAL_BANKACCOUNT_CREDIT,
+        creditBalanceAvailable: INITIAL_BANKACCOUNT_CREDIT
+    })
 
-
-    repository.saveBankAccount(bankAccountCreated)
+    await bankAccountRepository.saveBankAccount(bankAccountCreated)
     console.log(' BANK ACCOUNT CREATED', bankAccountCreated)
 }
 
+const updateCreditBalanceAvailable = async (bankAccount) => {
+    return await bankAccountRepository.updateCreditBalanceAvailable(bankAccount)
+}
+
+const findAccountByCc = async (cc) => {
+    const [bankAccount] = await bankAccountRepository.findAccountByCc(cc)
+
+    if (!bankAccount) {
+        throw new InvalidCcException()
+    }
 
 const findAccountByUserId = async (userId) => {
     const [bankAccount] = await repository.findAccountByUserId(userId)
@@ -24,13 +41,13 @@ const findAccountByUserId = async (userId) => {
     }
 }
 
-const updateMaxCredit = async (bankAccount) =>{
-    return repository.updateMaxCredit(bankAccount)
+const validateCc = async (cc) => {
+    return await findAccountByCc(cc)
 }
 
 const updateBalance = async (bankAccount) =>{
-    return repository.updateBalance(bankAccount)
+    return bankAccountRepository.updateBalance(bankAccount)
 }
 
-module.exports = { createBankAccount, findAccountByUserId, updateMaxCredit, updateBalance}
 
+module.exports = { createBankAccount, updateCreditBalanceAvailable, findAccountByCc, validateCc, updateBalance }

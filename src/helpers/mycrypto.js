@@ -4,7 +4,7 @@ module.exports = {
 
     encryptPassword: async (password, salt) => {
 
-        if(!salt) salt = await bcrypt.genSalt()
+        if (!salt) salt = await bcrypt.genSalt()
         return {
             encryptedPassword: bcrypt.hashSync(password, salt),
             salt: salt
@@ -15,6 +15,5 @@ module.exports = {
         const encryptedPassword = bcrypt.hashSync(password, salt)
         return encryptedPassword === encryptedPasswordToCompare
     }
-
 
 }

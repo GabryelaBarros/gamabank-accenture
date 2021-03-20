@@ -1,9 +1,7 @@
 const jwt = require('jsonwebtoken')
 const config = require('../../configs/env')
 
-
 const sign = async (object) => {
-
     const token = jwt.sign(object, config.secret, { algorithm: 'HS256', expiresIn: 300 })
 
     return {

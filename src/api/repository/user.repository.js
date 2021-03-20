@@ -22,10 +22,4 @@ const saveUser = async (user) => {
 
 }
 
-const findIdByCpf = async (user) => {
-    const query = `SELECT id FROM users WHERE cpf = "${user.cpf}";`
-    return await database.executeQuery(query)
-}
-
-
-module.exports = { findUserByLoginOrCpf, saveUser, findIdByCpf }
+module.exports = { findUserByLoginOrCpf, saveUser }

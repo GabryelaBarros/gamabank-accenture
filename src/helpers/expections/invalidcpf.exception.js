@@ -8,5 +8,4 @@ class InvalidCpfException extends Error {
     }
 }
 
-
 module.exports = InvalidCpfException
