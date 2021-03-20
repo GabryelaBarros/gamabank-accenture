@@ -7,7 +7,7 @@ const server = () => {
 
     const hapiServer = Hapi.server({
         port: process.env.PORT || 3000,
-        host: process.env.HOST || ' '
+        host: process.env.HOST || 'localhost'
     })
 
     hapiServer.route(routes)

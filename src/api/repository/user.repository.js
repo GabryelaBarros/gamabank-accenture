@@ -1,5 +1,6 @@
 const database = require('../../helpers/database')
 const crypto = require('../../helpers/mycrypto')
+const User = require('../models/user')
 
 const findUserByLoginOrCpf = async (user) => {
     const query = `SELECT * FROM users WHERE cpf = "${user.cpf}"` +

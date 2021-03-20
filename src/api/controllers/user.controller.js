@@ -21,12 +21,12 @@ const newUser = async (request, h) => {
 
     if (newCreateUser) {
         return h.response({
-            message: 'cadastrado com sucesso'
+            message: 'User created successfully'
         }).code(201)
 
     } else {
         return h.response({
-            message: 'o usuário já está cadastrado'
+            message: 'Login or CPF is registered'
         }).code(409)
     }
 
