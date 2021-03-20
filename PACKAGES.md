@@ -1,5 +1,5 @@
 <p>
-Abaixo segue a lista de software que você irá usar e como instalá-las.
+Abaixo segue a lista de módulos que integram essa API, seus usos e instalação.
 </p>
 
 <strong>npm</strong>
@@ -29,4 +29,24 @@ npm install @hapi/inert
 <strong>bcrypt</strong>
 ```sh
 npm install bcrypt
+```
+<strong>chai</strong>
+```sh
+$ npm install --save-dev chai
+```
+<strong>mocha</strong>
+```sh
+$ npm install --save-dev mocha
+```
+<strong>mysql</strong>
+```sh
+$ npm install mysql 5.7.33
+```
+<strong>jsonwwebtoken</strong>
+```sh
+$ npm install jsonwebtoken
+```
+<strong>nodemon</strong>
+```sh
+npm install -g nodemon
 ```
