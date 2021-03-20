@@ -75,8 +75,10 @@ npm run test
 
 ## Grupo - Developers
 
-👤 **Thays Conceição**
-
-* Github: [@thaconceicao](https://github.com/thaconceicao)
+👤 **Conrado Lo Duca** | * Github: [@cloduca](https://github.com/cloduca)
+👤 **Gabryela Barros** | * Github: [@GabryelaBarros](https://github.com/GabryelaBarros)
+👤 **Jamilly Vistoria** | * Github: [@jamillyvictoria](https://github.com/jamillyvictoria)
+👤 **Saulo Albuquerque** | * Github: [@SauloAnjos](https://github.com/SauloAnjos)
+👤 **Thays Conceição** | * Github: [@thaconceicao](https://github.com/thaconceicao)
 
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
