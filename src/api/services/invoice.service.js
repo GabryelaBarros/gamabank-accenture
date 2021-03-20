@@ -5,7 +5,7 @@ const Invoice = require('../models/invoice')
 const getPendingInvoiceByCc = async (cc, isCredit) => {
     await bankAccountService.validateCc(cc)
 
-   const expenses = await expenseService.listCreditExpenses(cc, isCredit)
+   const expenses = await expenseService.listExpenses(cc, isCredit)
 
     const amountInvoice = expenseService.summarizeExpenses(expenses)
 
