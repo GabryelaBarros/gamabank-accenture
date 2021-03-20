@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to # 🏦 Gama Bank 💲</h1>
+<h1 align="center">Welcome to # 🏦 Gama Bank</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/GabryelaBarros/gamabank-accenture" target="_blank">
@@ -9,9 +9,25 @@
   </a>
 </p>
 
-> Temos o objetivo de construir uma aplicação financeira, utilizando Node.js, suas bibliotecas e tecnologias e disponibiliza-las em um servidor em cloud com acesso irrestrito por zona ou por horário.
+> Nosso momento é de cada vez mais aprender sobre como administrar nosso patrimônio pois como diz o ditado "não tá fácil pra ninguém", não é mesmo? Sendo assim, queremos começar não só cuidando do nosso dinheiro, mas do seu também. <br/> Criamos a Gama Bank para ser uma fintech diferente e que seja acima de tudo capaz de transformar a vida das pessoas e suas carreiras (sacoou?)
 
-## Install
+## Objetivo
+
+<p>Estamos construindo uma aplicação web, para trazer o mais novo banco digital para vocês tecnologias que aprendemos durante o curso (você é livre para substitui-las mas fica por sua conta e risco, ok ?) e disponibiliza-las em um servidor em cloud com acesso irrestrito por zona ou por horário.</p>
+
+## Construção
+
+<p>
+Utilizamos na construção da nossa aplicação:
+<ul>
+<li>Node.js</li>
+<li>MySqL e Workbench</li>
+<li>Heroku</li>
+<li>VS Code</li>
+</ul>
+</p>
+
+## Packages
 
 ```sh
 npm install
@@ -29,7 +45,7 @@ npm install
 npm run test
 ```
 
-## Author
+## Grupo - Developers
 
 👤 **Thays Conceição**
 
