@@ -11,7 +11,7 @@
 
 > Nosso momento é de cada vez mais aprender sobre como administrar nosso patrimônio pois como diz o ditado "não tá fácil pra ninguém", não é mesmo? Sendo assim, queremos começar não só cuidando do nosso dinheiro, mas do seu também. <br/> Criamos a Gama Bank para ser uma fintech diferente e que seja acima de tudo capaz de transformar a vida das pessoas e suas carreiras (sacoou?)
 
-<iframe src="https://drive.google.com/file/d/1eeYHygNDjQ3r520UHl3fJF3b7xn5zHh7/preview" width="640" height="480"></iframe>
+<img src="https://lh3.googleusercontent.com/fife/ABSRlIpduiUzfFu2WUGVPUngcAiAWsOkxxFNIFy39iYRXnDx76YufZ8cwEgNH9uBFVKUc5KrAFU-WOtqaIivChfImE1H7lxOVOrMFJhLhrXtdvQYM-AHsBpBfSwErrngdG2DNPI5sisd2c47OqUA2C6NzbohdqpnGMjGuXSqc_BuW2iGF2jVQDUJpCYNBbmOWPB1lCsY8lPsRkB6IuF6-OJlOd5aoNX8hUvgaN9wDvpOo4cTj-buQEC4voAIR_W9TTgnu_E2dAP8wkjW30JmOrAXk4u_Rgy7A24y1C446TebJ5RGFKWl9vDzQSWcg7vCc6-okWp4zPd2i6q4IiFnmPDywjEg7YbqWyFlTv2YUVdhlBkJgkz8vPK3odRwDl6xZwasRiaaSt-s77hZACxA-N4fnosMXAbwpYWc6lt1bY1xEf5yddJVW_R15RjQjRMP_EvoxmJs1r5ZPlCouTulMqw9h7dNqS5oFQsiV49Aqh7LEhwze6hBhedtnjVzTW0SAw889eGb79FsJn7xAF_NJvo1jQ4jjjuvKVRl4Nf0WkT4vfJcz_h2mLbjNFG47IN58ar89OVntWKYIZoE4z7gnc9kN6Qr49QewJHhWs5rw_AUY9XY5EguNTGipU6IBWGTJstpH-WHdZ-Lxumtkp_cj0-xZ7mhJG_amdDZLmQZ4G_MJdQt2T-Nv2q1ayFfSbczlaGZ-19BmYRC3pXIOX6YQhRi5sbSRttYq4C0eA=w2880-h976-ft">
 
 ## Objetivo
 
@@ -54,12 +54,8 @@ Utilizamos na construção da nossa aplicação:
 
 ## Packages
 <p>
-Para conferir a lista completa dos nossos software e como instalá-las, basta acessar PACKAGES.md.
+Para conferir a lista completa dos nossos software e como instalá-las, basta acessar <a href="https://github.com/GabryelaBarros/gamabank-accenture/blob/main/PACKAGES.md">PACKAGES.md</a>.
 </p>
-
-```sh
-npm install
-```
 
 ## Scripts
 
