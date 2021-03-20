@@ -1,5 +1,5 @@
 
-const BankAccount = require('../models/bank.account')
+const BankAccount = require('../models/bankaccount')
 const InvalidCcException = require('../../helpers/expections/InvalidCcException')
 const bankAccountRepository = require('../repository/bankaccount.repository')
 
@@ -29,9 +29,10 @@ const findAccountByCc = async (cc) => {
     if (!bankAccount) {
         throw new InvalidCcException()
     }
+}
 
 const findAccountByUserId = async (userId) => {
-    const [bankAccount] = await repository.findAccountByUserId(userId)
+    const [bankAccount] = await bankAccountRepository.findAccountByUserId(userId)
     console.log('findAccountByUserId', bankAccount)
     if (bankAccount === undefined){
         return null
@@ -50,4 +51,4 @@ const updateBalance = async (bankAccount) =>{
 }
 
 
-module.exports = { createBankAccount, updateCreditBalanceAvailable, findAccountByCc, validateCc, updateBalance }
+module.exports = { createBankAccount, updateCreditBalanceAvailable, findAccountByCc, validateCc, updateBalance, findAccountByUserId }
