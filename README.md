@@ -19,7 +19,7 @@ Construção de API Backend para a fintech Gama Bank que pode ser usada em Node.
 
 ## Instruções e Navegação
 <p>
-Toda a aplicação foi organizada usando a 
+A arquitetura está organizada em folder 
 </p>
 
 ## Construção
@@ -70,10 +70,9 @@ Confira nossa
 </p>
 
 ## Testes
-
-```sh
-npm run test
-```
+<p>
+Realizamos teste unitários dos endpoints utilizamos o framework `jest v.26.6.3` e validamos as informação relacionadas a classe de `user.service`. Para mockar módulos externos, foi utilizado a propria função do `jest` que é o `jest.mock`.
+</p>
 
 ## Grupo - Developers
 
