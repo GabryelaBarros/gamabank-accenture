@@ -1,48 +1,38 @@
-# 🏦 Gama Bank 💲 Verde de dinheiro
-
-<p align="center">
-  <img src="https://media.tenor.com/images/63dc70b43a949617fdfa3447868d534d/tenor.gif" alt="Hulk Smart"/>
+<h1 align="center">Welcome to # 🏦 Gama Bank 💲</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/GabryelaBarros/gamabank-accenture" target="_blank">
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
+  </a>
+  <a href="#" target="_blank">
+    <img alt="License: ISC" src="https://img.shields.io/badge/License-ISC-yellow.svg" />
+  </a>
 </p>
 
-Nosso momento é de cada vez mais aprender sobre como administrar nosso patriminio pois como diz o ditado "não tá facil pra ninguém", não é mesmo ? Sendo assim, queremos começar não só querer cuidar do nosso dinheiro, mas do seu também. Criamos a Gama Bank para ser uma fintech diferente e que seja acima de tudo capaz de transformar a vida das pessoas e suas carreiras (sacoou?)
+> Temos o objetivo de construir uma aplicação financeira, utilizando Node.js, suas bibliotecas e tecnologias e disponibiliza-las em um servidor em cloud com acesso irrestrito por zona ou por horário.
 
-## Nosso time, seu projeto de vida !
+## Install
 
-Ainda estamos em desenvolvimento e você juntamente com seu time deverão ser capazes de construir nosso MVP (Minimo Produto Viavel) e garantir que possamos disponibilizar para o time de frontend a implementação dessa solução, que para nós, será um divisor de aguas na sua carreira (sacoou?)
+```sh
+npm install
+```
 
-## Objetivo
-Construir uma aplicação web, utilizando Node.js e todas as bibliotecas e tecnologias que aprendemos durante o curso (você é livre para substitui-lás mas fica por sua conta e risco, ok ?) e disponibiliza-las em um servidor em cloud com acesso irrestrito por zona ou por horario.
+## Scripts
 
+```sh
+npm install
+```
 
-## Artefatos e entregaveis
-* Disponibilização de uma API com deverá conter toda a aplicação e todas as suas rotas
-* Disponibilização de uma pagina contendo a documentação dos recursos e as regras para execução dos mesmos
-* Board projeto: [recomendamos o nosso template no trello](https://trello.com/b/omMyz2qd/projeto-gamabank)
-* Fork deste repositório contendo:
-    * Instruções de Instalação e operação
-    * Detalhamento das funcionalidades
-    * Membros envolvidos no projeto com seus perfis do github associados
-    * Link para acesso ao repositório publicado em nuvem.
+## Run tests
 
+```sh
+npm run test
+```
 
-## Orientações
-- Aplique as boas praticas de desenvolvimento, lembrese de temas como DRY e KISS
-- Tenha sempre testes unitários  no seu projeto.
+## Author
 
+👤 **Thays Conceição**
 
-## Critérios de aceite
-1. Entregou a API Backend devidade documentada 
-2. Cadastrou usúarios com as respectivas contas
-3. Realizou transferencia entre conta existes e/ou inexistentes
-4. Realizou lançamentos de compras feitas com crédito e débito
-5. Realizou envio de email confirmando o lançamento de crédito ou débito para o email do usuario
-6. Exibiu o extrato bancário e fatura de crédito
+* Github: [@thaconceicao](https://github.com/thaconceicao)
 
-
-
-
-
-
-
-
-
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
