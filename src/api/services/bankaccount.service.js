@@ -33,13 +33,13 @@ const findAccountByCc = async (cc) => {
     if (!bankAccount) {
         throw new InvalidCcException()
     }
-
     console.log('findAccountByCc', bankAccount)
     return new BankAccount(bankAccount)
+
 }
 
 const findAccountByUserId = async (userId) => {
-    const [bankAccount] = await repository.findAccountByUserId(userId)
+    const [bankAccount] = await bankAccountRepository.findAccountByUserId(userId)
     console.log('findAccountByUserId', bankAccount)
     if (bankAccount === undefined){
         return null
