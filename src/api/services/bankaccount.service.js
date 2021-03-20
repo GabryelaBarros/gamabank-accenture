@@ -23,8 +23,12 @@ const updateCreditBalanceAvailable = async (bankAccount) => {
     return await bankAccountRepository.updateCreditBalanceAvailable(bankAccount)
 }
 
+const updateBalance = async (bankAccount) => {
+    return await bankAccountRepository.updateBalance(bankAccount)
+}
+
 const findAccountByCc = async (cc) => {
-    const [bankAccount] = await bankAccountRepository.findAccountByCc(cc)
+    const bankAccount = await bankAccountRepository.findAccountByCc(cc)
 
     if (!bankAccount) {
         throw new InvalidCcException()
@@ -38,4 +42,10 @@ const validateCc = async (cc) => {
     return await findAccountByCc(cc)
 }
 
-module.exports = { createBankAccount, updateCreditBalanceAvailable, findAccountByCc, validateCc }
+module.exports = {
+    createBankAccount,
+    updateCreditBalanceAvailable,
+    findAccountByCc,
+    validateCc,
+    updateBalance
+}

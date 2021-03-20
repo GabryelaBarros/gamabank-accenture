@@ -2,8 +2,9 @@
 const { status } = require('../api/controllers/app.controller')
 const authController = require('../api/controllers/auth.controller')
 const userController = require('../api/controllers/user.controller')
-const creditController = require('../api/controllers/credit.controller')
+const expenseController = require('../api/controllers/expenses.controller')
 const invoiceController = require('../api/controllers/invoice.controller')
+const statementController = require('../api/controllers/statement.controller')
 
 const root = {
     method: 'GET',
@@ -30,10 +31,10 @@ const newuser = {
 }
 
 //TODO autenticar essa rota
-const credit = {
+const expenses = {
     method: 'POST',
-    path: '/credit/expense',
-    handler: creditController.creditExpense //TODO verificar se o nome tá bom
+    path: '/expense',
+    handler: expenseController.processExpense //TODO verificar se o nome tá bom
 }
 
 const invoice = {
@@ -42,4 +43,10 @@ const invoice = {
     handler: invoiceController.pendingInvoice
 }
 
-module.exports = [root, login, validate, newuser, credit, invoice]
+const statement = {
+    method: 'GET',
+    path: '/statement/{cc?}',
+    handler: statementController.bankStatement
+}
+
+module.exports = [root, login, validate, newuser, expenses, invoice,statement]
