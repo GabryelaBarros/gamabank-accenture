@@ -30,17 +30,9 @@ npm install @hapi/inert
 ```sh
 npm install bcrypt
 ```
-<strong>chai</strong>
+<strong>mysql v.5.7.33</strong>
 ```sh
-$ npm install --save-dev chai
-```
-<strong>mocha</strong>
-```sh
-$ npm install --save-dev mocha
-```
-<strong>mysql</strong>
-```sh
-$ npm install mysql 5.7.33
+$ npm install mysql
 ```
 <strong>jsonwwebtoken</strong>
 ```sh
@@ -49,4 +41,8 @@ $ npm install jsonwebtoken
 <strong>nodemon</strong>
 ```sh
 npm install -g nodemon
+```
+<strong>jest v.26.6.3</strong>
+```sh
+npm install --save-dev jest
 ```
