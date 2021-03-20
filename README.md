@@ -19,7 +19,7 @@ Construção de API Backend para a fintech Gama Bank. Linguagem `Javascript`.
 
 ## Instruções e Navegação
 <p>
-A arquitetura está organizada em folder 
+A arquitetura está organizada pensando em implementar um modelo de escalável. A aplicação está organizada seguindo o seguinte fluxo:<strong> Requisição inicial > Server > Route > Controller > Service > Repository </strong> e em  paralelo a esse fluxo, temos <strong>Database, Models e Helpers</strong> estão trabalhando constantemente nas solicitações. 
 </p>
 
 ## Construção
