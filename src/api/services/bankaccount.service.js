@@ -35,7 +35,10 @@ const findAccountByCc = async (cc) => {
     }
     console.log('findAccountByCc', bankAccount)
     return new BankAccount(bankAccount)
+}
 
+const validateCc = async (cc) => {
+    return await findAccountByCc(cc)
 }
 
 const findAccountByUserId = async (userId) => {
@@ -47,14 +50,6 @@ const findAccountByUserId = async (userId) => {
     else{
         return new BankAccount(bankAccount)
     }
-}
-
-const validateCc = async (cc) => {
-    return await findAccountByCc(cc)
-}
-
-const updateBalance = async (bankAccount) =>{
-    return repository.updateBalance(bankAccount)
 }
 
 module.exports = {

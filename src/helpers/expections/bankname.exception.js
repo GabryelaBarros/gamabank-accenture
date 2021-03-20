@@ -8,5 +8,4 @@ class bankNameInvalid extends Error {
     }
 }
 
-
 module.exports = bankNameInvalid

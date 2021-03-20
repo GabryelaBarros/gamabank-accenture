@@ -6,6 +6,4 @@ class accountInvalid extends Error {
     }
 }
 
-
-
 module.exports = accountInvalid
