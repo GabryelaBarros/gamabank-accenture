@@ -4,6 +4,7 @@ const authController = require('../api/controllers/auth.controller')
 const userController = require('../api/controllers/user.controller')
 const expenseController = require('../api/controllers/expenses.controller')
 const invoiceController = require('../api/controllers/invoice.controller')
+const statementController = require('../api/controllers/statement.controller')
 
 const root = {
     method: 'GET',
@@ -42,4 +43,10 @@ const invoice = {
     handler: invoiceController.pendingInvoice
 }
 
-module.exports = [root, login, validate, newuser, expenses, invoice]
+const statement = {
+    method: 'GET',
+    path: '/statement/{cc?}',
+    handler: statementController.bankStatement
+}
+
+module.exports = [root, login, validate, newuser, expenses, invoice,statement]

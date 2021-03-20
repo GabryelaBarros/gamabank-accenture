@@ -14,9 +14,11 @@ const entryExpense = async (expense) => {
 }
 
 const processExpense = async (bankAccount, expense) => {
+    console.log('process expense', expense.isCredit)
     if (expense.isCredit) {
         await processCreditExpense(bankAccount, expense)
     } else {
+        
         await processDebitExpense(bankAccount, expense)
     }
 }
@@ -52,12 +54,13 @@ const processDebitExpense = async (bankAccount, expense) => {
     }
 
     bankAccount.balance -= expense.value
+    console.log('after debit expense', bankAccount)
 
     await bankAccountService.updateBalance(bankAccount)
 }
 
-const listCreditExpenses = async (cc, isCredit) => {
-    const expenses = await expenseRepository.listCreditExpenses(cc, isCredit)
+const listExpenses = async (cc, isCredit) => {
+    const expenses = await expenseRepository.listExpenses(cc, isCredit)
     return expenses
 }
 
@@ -66,5 +69,5 @@ module.exports = {
     summarizeExpenses,
     processCreditExpense,
     processCreditExpense,
-    listCreditExpenses
+    listExpenses
 }

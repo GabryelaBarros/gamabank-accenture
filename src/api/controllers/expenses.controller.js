@@ -16,7 +16,7 @@ const processExpense = async (request, h) => {
     }
 
     return h.response({
-        message: 'transação aprovada'
+        message: 'Approved transaction'
     }).code(200)
 }
 
