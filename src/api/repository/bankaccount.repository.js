@@ -13,14 +13,6 @@ const saveBankAccount = async (bankAccount) => {
     return await database.executeQuery(query)
 }
 
-const findAccountByUserId = async (userId) => {
-    const query = `SELECT * FROM bankAccount ` +
-        `WHERE bankAccount.userId = ${userId};`
-
-    const [dataFromDb] = await database.executeQuery(query)
-    return dataFromDb
-}
-
 const updateCreditBalanceAvailable = async (bankAccount) => {
     const query = `UPDATE bankAccount SET ` +
         `creditBalanceAvailable = ${bankAccount.creditBalanceAvailable} ` +
