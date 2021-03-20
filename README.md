@@ -14,7 +14,7 @@
 ## Descrição
 
 <p>
-Construção de API Backend para a fintech Gama Bank. Linguagem `Javascript.
+Construção de API Backend para a fintech Gama Bank. Linguagem `Javascript`.
 </p>
 
 ## Instruções e Navegação
