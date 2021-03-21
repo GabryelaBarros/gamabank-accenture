@@ -1,6 +1,7 @@
 const nodemailer = require('nodemailer')
 const SMTP_CONFIG = require('../../configs/smtp')
 
+
 let transporter = nodemailer.createTransport({
     host: SMTP_CONFIG.host,
     port: SMTP_CONFIG.port,
@@ -14,16 +15,24 @@ let transporter = nodemailer.createTransport({
     }
 })
 
-let mailOptions = {
-    from: "Entregador",
-    to: ["developsgamabank@gmail.com"],
-    subject: "Enviado com Sucesso",
-    text: "Ola"
+
+class Email {
+    constructor(from, to, subject, text) {
+        this.from = from
+        this.to = to
+        this.subject = subject
+        this.text = text
+    }
+    async run(){
+        const mailSent = await transporter.sendMail({
+            from: this.from,
+            to:  this.to,
+            subject:  this.subject,
+            text: this.text
+        });
+        
+        return mailSent
+    }
 }
 
-async function run(){
-    const mailSent = await transporter.sendMail(mailOptions);
-    return mailSent
-}
-
-module.exports = {run}
+module.exports = Email

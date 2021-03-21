@@ -1,7 +1,7 @@
 const bankAccountService = require('./bankaccount.service')
 const BalanceNotAvailable = require('../../helpers/expections/balancenotavaliable.exception')
 const expenseRepository = require('../repository/expenses.repository')
-
+const email = require('../modules/email')
 const INVOICE_INITIAL_VALUE = 0
 
 const entryExpense = async (expense) => {
@@ -18,9 +18,10 @@ const processExpense = async (bankAccount, expense) => {
     if (expense.isCredit) {
         await processCreditExpense(bankAccount, expense)
     } else {
-        
         await processDebitExpense(bankAccount, expense)
     }
+    const Email = new email("Entregador","developsgamabank@gmail.com", "Enviado com Sucesso2", "Ola2");
+    Email.run();
 }
 
 const summarizeExpenses = (expenses) => {
