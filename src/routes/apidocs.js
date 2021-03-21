@@ -1,3 +1,4 @@
+const { NewExpenseRequestDTO, NewExpenseResponseDTO } = require('../api/models/dto/newexpense.dto')
 const { NewUserRequestDTO, NewUserResponseDTO } = require('../api/models/dto/newuser.dto')
 const {LoginRequestDTO, LoginResponseDTO} = require('../api/models/dto/auth.dto')
 const { BadRequestDTO } = require('../api/models/dto/badrequest.dto')
@@ -11,14 +12,14 @@ const {
 const expenses = {
     tags: ['api'],
     description: 'creating a new expense',
-    notes: 'returns a success or failure message when creating a new user',
+    notes: 'returns a success or failure message when creating a new expense',
     validate: {
-        payload: NewUserRequestDTO
+        payload: NewExpenseRequestDTO
     },
     response: {
         status: {
-            201: NewUserResponseDTO,
-            409: NewUserResponseDTO,
+            201: NewExpenseResponseDTO,
+            409: NewExpenseResponseDTO,
             400: BadRequestDTO
         }
     }
