@@ -48,7 +48,9 @@ const validateCc = async (cc) => {
 
 const findAccountByUserId = async (userId) => {
     const bankAccount = await bankAccountRepository.findAccountByUserId(userId)
-
+    if (!bankAccount) {
+        throw new InvalidCcException()
+    }
     return new BankAccount(bankAccount)
 }
 
