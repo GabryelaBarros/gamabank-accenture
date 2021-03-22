@@ -3,7 +3,7 @@ const service = require('../services/auth.service')
 
 const login = async (request, h) => {
 
-    //TODO: Refatorar
+    
     const { username, password } = request.payload
     return await service.sign({ username, password })
 

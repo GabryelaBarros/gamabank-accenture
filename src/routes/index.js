@@ -37,16 +37,16 @@ const validate = {
 const newuser = {
     method: 'POST',
     path: '/signup',
-    handler: userController.newUser, //TODO colocar novas rotas para validação de cpf e de senha?
+    handler: userController.newUser,
     options: ApiDocs.signup
 }
 
-//TODO autenticar essa rota
+
 const expenses = {
     method: 'POST',
     path: '/expense',
     handler: expenseController.processExpense,
-    options: ApiDocs.expenses//TODO verificar se o nome tá bom
+    options: ApiDocs.expenses
 }
 
 const invoice = {

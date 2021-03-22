@@ -7,7 +7,7 @@ const createExpense = async (expense) => {
 
     return await database.executeQuery(query)
 }
-//TODO rever isso aqui
+
 const listExpenses = async (cc, isCredit) => {
     const query = `SELECT value, created_at ` +
         `FROM expenses` +

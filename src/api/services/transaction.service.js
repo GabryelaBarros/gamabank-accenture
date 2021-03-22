@@ -36,7 +36,7 @@ const makeTransaction = async (transaction) => {
                         balance: value
                     })
                     console.log("Transferência entre contas GamaBank realizada com sucesso.")
-                    //TODO ADICIONAR NO EXTRATO A TRANSFERENCIA INTERNA
+                    
                 }
             }
             else if (type === "outer") {
@@ -47,7 +47,7 @@ const makeTransaction = async (transaction) => {
                             balance: -value
                         })
                         console.log("Transferência externa realizada com sucesso.")
-                        //TODO ADICIONAR NO EXTRATO A TRANSFERENCIA EXTERNA
+                        
                     }
                     else {
                         throw new invalidBankName()
