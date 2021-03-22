@@ -9,7 +9,7 @@ const findUserByLoginOrCpf = async (user) => {
     return await database.executeQuery(query)
 }
 
-const findUserByUserId= async (id) => {
+const findUserById= async (id) => {
     const query = `SELECT * FROM users WHERE id = "${id}";`
 
     return await database.executeQuery(query)
@@ -28,4 +28,4 @@ const saveUser = async (user) => { //falar pra momo q eu acho q aqui ta errado
     return await database.executeQuery(query)
 }
 
-module.exports = { findUserByLoginOrCpf, saveUser, findUserByUserId} 
+module.exports = { findUserByLoginOrCpf, saveUser, findUserById} 

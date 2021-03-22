@@ -27,7 +27,7 @@ const processExpense = async (bankAccount, expense) => {
 }
 
 const sendEmailConfirmExpense = async (bankAccount, expense) => {
-    const user = await userService.findUserByIdUser(bankAccount.userId)
+    const user = await userService.findUserById(bankAccount.userId)
     const expenseType = expense.isCredit ? "Crédito" : "Débito"
 
     const email = new Email(user.login, 
