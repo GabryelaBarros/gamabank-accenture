@@ -21,9 +21,9 @@ const root = {
     }
 }
 
-const login = {
+const auth = {
     method: 'POST',
-    path: '/login',
+    path: '/auth',
     handler: authController.login,
     options: ApiDocs.login
 }
@@ -76,4 +76,4 @@ const transaction ={
     options: ApiDocs.transaction
 }
 
-module.exports = [root, login, validate, newuser, expenses, invoice, statement, userAccount, transaction]
+module.exports = [root, auth, validate, newuser, expenses, invoice, statement, userAccount, transaction]
