@@ -3,6 +3,8 @@ const PasswordLengthException = require('../../helpers/expections/password.excep
 const CPF = require('cpf')
 const InvalidCpfException = require('../../helpers/expections/invalidcpf.exception')
 const bankAccountService = require('./bankaccount.service')
+const User = require('../models/user')
+const UserNotFoundException = require('../../helpers/expections/usernotfound.exception')
 
 
 const createUser = async (newUser) => {
@@ -54,6 +56,25 @@ const findUserById = async (id) => {
     return userFromDb[0] //retornando o primeiro resultado da nossa consulta
 }
 
+const findUserAccountByCpf = async (cpf) => {
+    const user = new User({ cpf, login: cpf })
 
+    validateUserCpf(user)
 
-module.exports = { createUser, findUserByLoginOrCpf, validateUserPassword, validateUserCpf, findUserById}
+    const [userFromDb] = await userRepository.findUserByLoginOrCpf(user)
+
+    if (!userFromDb) {
+        throw new UserNotFoundException()
+    }
+
+    return await bankAccountService.findAccountByUserId(userFromDb.id)
+}
+
+module.exports = {
+    createUser,
+    findUserByLoginOrCpf,
+    validateUserPassword,
+    validateUserCpf,
+    findUserById,
+    findUserAccountByCpf
+}

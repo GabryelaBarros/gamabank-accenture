@@ -1,13 +1,23 @@
+const Joi = require('joi')
+
 const { NewExpenseRequestDTO, NewExpenseResponseDTO } = require('../api/models/dto/newexpense.dto')
 const { NewUserRequestDTO, NewUserResponseDTO } = require('../api/models/dto/newuser.dto')
 const { LoginRequestDTO, LoginResponseDTO } = require('../api/models/dto/auth.dto')
 const { BadRequestDTO } = require('../api/models/dto/badrequest.dto')
 const { StatementResponseDTO } = require('../api/models/dto/statement.dto')
+
+const {
+    UserAccountByCpfRequestDTO,
+    UserNotFoundResponseDTO,
+    UserAccountByCpfResponseDTO
+} = require('../api/models/dto/useraccountbycpf.dto')
+
 const {
     InvoiceRequestDTO,
     InvoiceResponseDTO,
     NotFoundCCResponseDTO
 } = require('../api/models/dto/invoice.dto')
+
 
 const expenses = {
     tags: ['api'],
@@ -89,4 +99,21 @@ const login = {
     }
 }
 
-module.exports = { expenses, invoice, statement, signup, login }
+const userAccount = {
+    tags: ['api'],
+    description: 'Find user account by cpf',
+    notes: 'return user bank account by cpf',
+    validate: {
+        params: UserAccountByCpfRequestDTO
+    },
+    response: {
+        status: {
+            200: UserAccountByCpfResponseDTO,
+            400: BadRequestDTO,
+            404: UserNotFoundResponseDTO,
+            406: UserNotFoundResponseDTO
+        }
+    }
+}
+
+module.exports = { expenses, invoice, statement, signup, login, userAccount }

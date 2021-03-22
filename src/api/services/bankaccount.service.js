@@ -2,6 +2,7 @@
 const InvalidCcException = require('../../helpers/expections/InvalidCcException')
 const BankAccount = require('../models/bankaccount')
 const bankAccountRepository = require('../repository/bankaccount.repository')
+const User = require('../models/user')
 
 const INITIAL_BANKACCOUNT_CREDIT = 200
 const INITIAL_BALANCE = 0
@@ -32,8 +33,9 @@ const updateBalanceByUserId = async (bankAccount) => {
 
 const findAccountByCc = async (cc) => {
     const bankAccount = await bankAccountRepository.findAccountByCc(cc)
-
+    console.log(' BANK ACCOUT BY CC', bankAccount)
     if (!bankAccount) {
+        console.log('CAI NO INVALID', !bankAccount)
         throw new InvalidCcException()
     }
     console.log('findAccountByCc', bankAccount)
@@ -45,14 +47,9 @@ const validateCc = async (cc) => {
 }
 
 const findAccountByUserId = async (userId) => {
-    const [bankAccount] = await bankAccountRepository.findAccountByUserId(userId)
-    console.log('findAccountByUserId', bankAccount)
-    if (bankAccount === undefined){
-        return null
-    }
-    else{
-        return new BankAccount(bankAccount)
-    }
+    const bankAccount = await bankAccountRepository.findAccountByUserId(userId)
+
+    return new BankAccount(bankAccount)
 }
 
 module.exports = {
