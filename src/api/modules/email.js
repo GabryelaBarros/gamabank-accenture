@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer')
 const SMTP_CONFIG = require('../../configs/smtp')
-
+const FROM = "Developers GamaBank"
 
 let transporter = nodemailer.createTransport({
     host: SMTP_CONFIG.host,
@@ -17,15 +17,14 @@ let transporter = nodemailer.createTransport({
 
 
 class Email {
-    constructor(from, to, subject, text) {
-        this.from = from
+    constructor(to, subject, text) {
         this.to = to
         this.subject = subject
         this.text = text
     }
     async run(){
         const mailSent = await transporter.sendMail({
-            from: this.from,
+            from: FROM,
             to:  this.to,
             subject:  this.subject,
             text: this.text
