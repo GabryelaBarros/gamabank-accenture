@@ -23,19 +23,23 @@ const processExpense = async (bankAccount, expense) => {
         await processDebitExpense(bankAccount, expense)
     }
 
-    await sendEmailConfirmExpense(bankAccount,expense)
+    await sendEmailConfirmExpense(bankAccount, expense)
 }
 
 const sendEmailConfirmExpense = async (bankAccount, expense) => {
     const user = await userService.findUserById(bankAccount.userId)
-    const expenseType = expense.isCredit ? "Crédito" : "Débito"
-    const message = expense.isCredit ? `O seu crédito disponível é: R$ ${bankAccount.creditBalanceAvailable}` : `O seu saldo disponível é: R$ ${bankAccount.balance}`
 
-    const email = new Email(user.login, 
-        `Olá ${user.name}, seu lançamento de ${expenseType} foi realizado com sucesso!`, 
-        `O valor da sua transação foi de: R$ ${expense.value} \n${message}`);
-    
-    await email.run();
+    if (isEmailValid(user.login)) {
+        console.log(`Sending email to ${user.login}`)
+        const expenseType = expense.isCredit ? "Crédito" : "Débito"
+        const message = expense.isCredit ? `O seu crédito disponível é: R$ ${bankAccount.creditBalanceAvailable}` : `O seu saldo disponível é: R$ ${bankAccount.balance}`
+
+        const email = new Email(user.login,
+            `Olá ${user.name}, seu lançamento de ${expenseType} foi realizado com sucesso!`,
+            `O valor da sua transação foi de: R$ ${expense.value} \n${message}`)
+
+        await email.run()
+    }
 }
 
 const summarizeExpenses = (expenses) => {
@@ -77,6 +81,11 @@ const processDebitExpense = async (bankAccount, expense) => {
 const listExpenses = async (cc, isCredit) => {
     const expenses = await expenseRepository.listExpenses(cc, isCredit)
     return expenses
+}
+
+const isEmailValid = (email) => {
+    const validEmailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    return validEmailRegex.test(String(email).toLowerCase())
 }
 
 module.exports = {
