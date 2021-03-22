@@ -9,7 +9,13 @@ const findUserByLoginOrCpf = async (user) => {
     return await database.executeQuery(query)
 }
 
-const saveUser = async (user) => {
+const findUserByUserId= async (id) => {
+    const query = `SELECT * FROM users WHERE id = "${id}";`
+
+    return await database.executeQuery(query)
+}
+
+const saveUser = async (user) => { //falar pra momo q eu acho q aqui ta errado
     const encrypt = await crypto.encryptPassword(user.password, null)
     console.log(encrypt)
     user.salt = encrypt.salt
@@ -20,7 +26,6 @@ const saveUser = async (user) => {
         `"${user.salt}");`
 
     return await database.executeQuery(query)
-
 }
 
-module.exports = { findUserByLoginOrCpf, saveUser }
+module.exports = { findUserByLoginOrCpf, saveUser, findUserByUserId} 

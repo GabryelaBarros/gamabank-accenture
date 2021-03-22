@@ -4,6 +4,7 @@ const CPF = require('cpf')
 const InvalidCpfException = require('../../helpers/expections/invalidcpf.exception')
 const bankAccountService = require('./bankaccount.service')
 
+
 const createUser = async (newUser) => {
     validateUserPassword(newUser)
 
@@ -46,4 +47,13 @@ const findUserByLoginOrCpf = async (user) => {
     return usersFromDb.length === 0
 }
 
-module.exports = { createUser, findUserByLoginOrCpf, validateUserPassword, validateUserCpf }
+
+const findUserByIdUser = async (id) => {
+    const userFromDb = await userRepository.findUserByUserId(id)
+
+    return userFromDb
+}
+
+
+
+module.exports = { createUser, findUserByLoginOrCpf, validateUserP,assword, validateUserCpf, findUserByIdUser}
