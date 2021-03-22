@@ -29,12 +29,13 @@ const processExpense = async (bankAccount, expense) => {
 const sendEmailConfirmExpense = async (bankAccount, expense) => {
     const user = await userService.findUserById(bankAccount.userId)
     const expenseType = expense.isCredit ? "Crédito" : "Débito"
+    const message = expense.isCredit ? `O seu crédito disponível é: R$ ${bankAccount.creditBalanceAvailable}` : `O seu saldo disponível é: R$ ${bankAccount.balance}`
 
     const email = new Email(user.login, 
-        `Olá ${user.name} seu lançamento de ${expenseType} foi realizado com sucesso!`, 
-        `O valor da sua transacao foi de: R$ ${expense.value} \nO seu crédito disponível é: R$ ${bankAccount.creditBalanceAvailable}`);
+        `Olá ${user.name}, seu lançamento de ${expenseType} foi realizado com sucesso!`, 
+        `O valor da sua transação foi de: R$ ${expense.value} \n${message}`);
     
-    console.log(await email.run());
+    await email.run();
 }
 
 const summarizeExpenses = (expenses) => {
