@@ -38,7 +38,7 @@ const newuser = {
     method: 'POST',
     path: '/signup',
     handler: userController.newUser, //TODO colocar novas rotas para validação de cpf e de senha?
-    options: ApiDocs.newUser
+    options: ApiDocs.signup
 }
 
 //TODO autenticar essa rota
@@ -62,6 +62,7 @@ const statement = {
     handler: statementController.bankStatement,
     options: ApiDocs.statement
 }
+
 
 const transaction ={
     method: 'PUT',

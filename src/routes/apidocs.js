@@ -1,5 +1,6 @@
+const { NewExpenseRequestDTO, NewExpenseResponseDTO } = require('../api/models/dto/newexpense.dto')
 const { NewUserRequestDTO, NewUserResponseDTO } = require('../api/models/dto/newuser.dto')
-const {LoginRequestDTO, LoginResponseDTO} = require('../api/models/dto/auth.dto')
+const { LoginRequestDTO, LoginResponseDTO } = require('../api/models/dto/auth.dto')
 const { BadRequestDTO } = require('../api/models/dto/badrequest.dto')
 const { StatementResponseDTO } = require('../api/models/dto/statement.dto')
 const {
@@ -11,15 +12,15 @@ const {
 const expenses = {
     tags: ['api'],
     description: 'creating a new expense',
-    notes: 'returns a success or failure message when creating a new user',
+    notes: 'returns a success or failure message when creating a new expense',
     validate: {
-        payload: NewUserRequestDTO
+        payload: NewExpenseRequestDTO
     },
     response: {
         status: {
-            201: NewUserResponseDTO,
-            409: NewUserResponseDTO,
-            400: BadRequestDTO
+            201: NewExpenseResponseDTO,
+            400: BadRequestDTO,
+            406: NewExpenseResponseDTO
         }
     }
 }
@@ -34,8 +35,8 @@ const invoice = {
     response: {
         status: {
             200: InvoiceResponseDTO,
-            409: NotFoundCCResponseDTO,
-            400: BadRequestDTO
+            400: BadRequestDTO,
+            404: NotFoundCCResponseDTO
         }
     }
 }
@@ -50,12 +51,13 @@ const statement = {
     response: {
         status: {
             200: StatementResponseDTO,
-            409: NotFoundCCResponseDTO
+            400: BadRequestDTO,
+            404: NotFoundCCResponseDTO
         }
     }
 }
 
-const newUser = {
+const signup = {
     tags: ['api'],
     description: 'creating a new user',
     notes: 'returns a success or failure message when creating a new user',
@@ -65,8 +67,9 @@ const newUser = {
     response: {
         status: {
             201: NewUserResponseDTO,
-            409: NewUserResponseDTO,
-            400: BadRequestDTO
+            400: BadRequestDTO,
+            406: NewUserResponseDTO,
+            409: NewUserResponseDTO
         }
     }
 }
@@ -86,4 +89,4 @@ const login = {
     }
 }
 
-module.exports = { expenses, invoice, statement, newUser, login }
+module.exports = { expenses, invoice, statement, signup, login }
