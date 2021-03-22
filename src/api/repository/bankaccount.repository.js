@@ -1,5 +1,4 @@
 const database = require('../../helpers/database')
-const BankAccount = require('../models/bankaccount')
 
 const saveBankAccount = async (bankAccount) => {
     const query = `INSERT INTO bankAccount ` +
@@ -17,15 +16,21 @@ const updateCreditBalanceAvailable = async (bankAccount) => {
     const query = `UPDATE bankAccount SET ` +
         `creditBalanceAvailable = ${bankAccount.creditBalanceAvailable} ` +
         `WHERE cc = ${bankAccount.cc};`
-
     return await database.executeQuery(query)
 }
+
 
 const updateBalance = async (bankAccount) => {
     const query = `UPDATE bankAccount SET ` +
         `balance = ${bankAccount.balance} ` +
         `WHERE cc = ${bankAccount.cc};`
 
+    return await database.executeQuery(query)
+}
+
+const updateBalanceByUserId = async (bankAccount) => {
+    const query = `UPDATE bankaccount SET balance = balance + ${bankAccount.balance} WHERE userId=${bankAccount.userId};`
+    
     return await database.executeQuery(query)
 }
 
@@ -50,5 +55,6 @@ module.exports = {
     updateCreditBalanceAvailable,
     findAccountByCc,
     updateBalance,
-    findAccountByUserId
+    findAccountByUserId,
+    updateBalanceByUserId
 }

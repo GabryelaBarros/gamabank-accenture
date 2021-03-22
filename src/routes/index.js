@@ -1,10 +1,10 @@
-
 const { status } = require('../api/controllers/app.controller')
 const authController = require('../api/controllers/auth.controller')
 const userController = require('../api/controllers/user.controller')
 const expenseController = require('../api/controllers/expenses.controller')
 const invoiceController = require('../api/controllers/invoice.controller')
 const statementController = require('../api/controllers/statement.controller')
+const transactionController = require('../api/controllers/transaction.controller')
 
 const ApiDocs = require('./apidocs')
 
@@ -69,5 +69,10 @@ const userAccount = {
     handler: userController.findUserAccountByCpf,
     options: ApiDocs.userAccount
 }
+const transaction ={
+    method: 'PUT',
+    path:'/transaction',
+    handler: transactionController.newTransaction
+}
 
-module.exports = [root, login, validate, newuser, expenses, invoice, statement, userAccount]
+module.exports = [root, login, validate, newuser, expenses, invoice, statement, userAccount, transaction]

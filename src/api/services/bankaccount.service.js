@@ -27,6 +27,9 @@ const updateCreditBalanceAvailable = async (bankAccount) => {
 const updateBalance = async (bankAccount) => {
     return await bankAccountRepository.updateBalance(bankAccount)
 }
+const updateBalanceByUserId = async (bankAccount) => {
+    return await bankAccountRepository.updateBalanceByUserId(bankAccount)
+}
 
 const findAccountByCc = async (cc) => {
     const bankAccount = await bankAccountRepository.findAccountByCc(cc)
@@ -35,7 +38,6 @@ const findAccountByCc = async (cc) => {
         console.log('CAI NO INVALID', !bankAccount)
         throw new InvalidCcException()
     }
-
     console.log('findAccountByCc', bankAccount)
     return new BankAccount(bankAccount)
 }
@@ -56,5 +58,6 @@ module.exports = {
     findAccountByCc,
     validateCc,
     updateBalance,
-    findAccountByUserId
+    findAccountByUserId,
+    updateBalanceByUserId
 }
