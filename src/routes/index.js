@@ -63,4 +63,11 @@ const statement = {
     options: ApiDocs.statement
 }
 
-module.exports = [root, login, validate, newuser, expenses, invoice, statement]
+const userAccount = {
+    method: 'GET',
+    path: '/bank-account/{cpf?}',
+    handler: userController.findUserAccountByCpf,
+    options: ApiDocs.userAccount
+}
+
+module.exports = [root, login, validate, newuser, expenses, invoice, statement, userAccount]

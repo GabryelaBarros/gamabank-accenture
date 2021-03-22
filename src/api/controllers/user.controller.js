@@ -32,4 +32,17 @@ const newUser = async (request, h) => {
 
 }
 
-module.exports = { newUser }
+const findUserAccountByCpf = async (request, h) => {
+    const cpf = request.params.cpf
+
+    try {
+        return await userService.findUserAccountByCpf(cpf)
+    } catch (exception) {
+        console.log(exception)
+        return h.response({
+            message: exception.message
+        }).code(exception.status)
+    }
+}
+
+module.exports = { newUser, findUserAccountByCpf }

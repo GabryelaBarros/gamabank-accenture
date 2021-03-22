@@ -56,4 +56,4 @@ const findUserById = async (id) => {
 
 
 
-module.exports = { createUser, findUserByLoginOrCpf, validateUserPassword, validateUserCpf, findUserById}
+module.exports = { createUser, findUserByLoginOrCpf, validateUserPassword, validateUserCpf, findUserById }

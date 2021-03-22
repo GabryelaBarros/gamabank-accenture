@@ -37,9 +37,18 @@ const findAccountByCc = async (cc) => {
     return dataFromDb
 }
 
+const findAccountByUserId = async(userId) => {
+    const query = `SELECT * FROM bankAccount ` +
+        `WHERE userId = ${userId};`
+
+    const [dataFromDb] = await database.executeQuery(query)
+    return dataFromDb
+}
+
 module.exports = {
     saveBankAccount,
     updateCreditBalanceAvailable,
     findAccountByCc,
-    updateBalance
+    updateBalance,
+    findAccountByUserId
 }
