@@ -1,12 +1,14 @@
 const bankAccountService = require('./bankaccount.service')
 const BalanceNotAvailable = require('../../helpers/expections/balancenotavaliable.exception')
 const expenseRepository = require('../repository/expenses.repository')
+const Email = require('../modules/email')
+const userService = require('./user.service')
+
 
 const INVOICE_INITIAL_VALUE = 0
 
 const entryExpense = async (expense) => {
     const bankAccount = await bankAccountService.findAccountByCc(expense.cc)
-
     await processExpense(bankAccount, expense)
 
     await createExpense(expense)
@@ -18,9 +20,21 @@ const processExpense = async (bankAccount, expense) => {
     if (expense.isCredit) {
         await processCreditExpense(bankAccount, expense)
     } else {
-        
         await processDebitExpense(bankAccount, expense)
     }
+
+    await sendEmailConfirmExpense(bankAccount,expense)
+}
+
+const sendEmailConfirmExpense = async (bankAccount, expense) => {
+    const user = await userService.findUserByIdUser(bankAccount.userId)
+    const expenseType = expense.isCredit ? "Crédito" : "Débito"
+
+    const email = new Email(user.login, 
+        `Olá ${user.name} seu lançamento de ${expenseType} foi realizado com sucesso!`, 
+        `O valor da sua transacao foi de: R$ ${expense.value} \nO seu crédito disponível é: R$ ${bankAccount.creditBalanceAvailable}`);
+    
+    console.log(await email.run());
 }
 
 const summarizeExpenses = (expenses) => {
