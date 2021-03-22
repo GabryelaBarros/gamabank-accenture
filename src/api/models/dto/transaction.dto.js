@@ -1,7 +1,7 @@
 const Joi = require('joi')
 
 const TransactionRequestDTO = Joi.object({
-    idUserHolder: Joi.number().optional(),
+    idUserHolder: Joi.number().required(),
     idUserDestiny: Joi.number().optional(),
     amount: Joi.number().required(),
     type: Joi.string().required(),

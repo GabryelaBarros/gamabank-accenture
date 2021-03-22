@@ -117,7 +117,6 @@ const userAccount = {
     }
 }
 
-
 const transaction = {
     tags: ['api'],
     description: 'make a new transaction',

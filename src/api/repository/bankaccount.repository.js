@@ -29,7 +29,7 @@ const updateBalance = async (bankAccount) => {
 }
 
 const updateBalanceByUserId = async (bankAccount) => {
-    const query = `UPDATE bankaccount SET balance = balance + ${bankAccount.balance} WHERE userId=${bankAccount.userId};`
+    const query = `UPDATE bankAccount SET balance = balance + ${bankAccount.balance} WHERE userId=${bankAccount.userId};`
     
     return await database.executeQuery(query)
 }
