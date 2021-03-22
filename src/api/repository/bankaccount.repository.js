@@ -34,6 +34,12 @@ const updateBalance = async (bankAccount) => {
     return await database.executeQuery(query)
 }
 
+const updateBalanceByUserId = async (bankAccount) => {
+    const query = `UPDATE bankaccount SET balance = balance + ${bankAccount.balance} WHERE userId=${bankAccount.userId};`
+    
+    return await database.executeQuery(query)
+}
+
 const findAccountByCc = async (cc) => {
     const query = `SELECT * FROM bankAccount ` +
         `WHERE cc = ${cc};`
@@ -47,5 +53,6 @@ module.exports = {
     updateCreditBalanceAvailable,
     findAccountByCc,
     updateBalance,
-    findAccountByUserId
+    findAccountByUserId,
+    updateBalanceByUserId
 }

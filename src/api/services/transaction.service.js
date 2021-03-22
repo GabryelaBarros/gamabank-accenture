@@ -26,12 +26,12 @@ const makeTransaction = async (transaction) => {
                     throw new accountInvalid("Destiny account not exist.")
                 }
                 else {
-                    bankAccountService.updateBalance({
+                    bankAccountService.updateBalanceByUserId({
                         userId: userId,
                         balance: -value
                     })
 
-                    bankAccountService.updateBalance({
+                    bankAccountService.updateBalanceByUserId({
                         userId: destinyUserId,
                         balance: value
                     })
@@ -42,7 +42,7 @@ const makeTransaction = async (transaction) => {
             else if (type === "outer") {
                 if (cpf.isValid(destinyUserCpf)) {
                     if (bankName != "" && bankName != null && bankName != undefined) {
-                        bankAccountService.updateBalance({
+                        bankAccountService.updateBalanceByUserId({
                             userId: userId,
                             balance: -value
                         })
