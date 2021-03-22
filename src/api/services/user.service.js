@@ -51,9 +51,9 @@ const findUserByLoginOrCpf = async (user) => {
 const findUserByIdUser = async (id) => {
     const userFromDb = await userRepository.findUserByUserId(id)
 
-    return userFromDb
+    return userFromDb[0] //retornando o primeiro resultado da nossa consulta
 }
 
 
 
-module.exports = { createUser, findUserByLoginOrCpf, validateUserP,assword, validateUserCpf, findUserByIdUser}
+module.exports = { createUser, findUserByLoginOrCpf, validateUserPassword, validateUserCpf, findUserByIdUser}
