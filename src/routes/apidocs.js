@@ -5,6 +5,7 @@ const { NewUserRequestDTO, NewUserResponseDTO } = require('../api/models/dto/new
 const { LoginRequestDTO, LoginResponseDTO } = require('../api/models/dto/auth.dto')
 const { BadRequestDTO } = require('../api/models/dto/badrequest.dto')
 const { StatementResponseDTO } = require('../api/models/dto/statement.dto')
+const { TransactionRequestDTO,  TransactionResponseDTO} = require('../api/models/dto/transaction.dto')
 
 const {
     UserAccountByCpfRequestDTO,
@@ -116,4 +117,20 @@ const userAccount = {
     }
 }
 
-module.exports = { expenses, invoice, statement, signup, login, userAccount }
+
+const transaction = {
+    tags: ['api'],
+    description: 'make a new transaction',
+    notes: 'return transaction message description',
+    validate: {
+        payload: TransactionRequestDTO
+    },
+    response: {
+        status: {
+            200: TransactionResponseDTO,
+            400: BadRequestDTO,
+        }
+    }
+}
+
+module.exports = { expenses, invoice, statement, signup, login, userAccount, transaction }

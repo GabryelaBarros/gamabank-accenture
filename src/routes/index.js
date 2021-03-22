@@ -72,7 +72,8 @@ const userAccount = {
 const transaction ={
     method: 'PUT',
     path:'/transaction',
-    handler: transactionController.newTransaction
+    handler: transactionController.newTransaction,
+    options: ApiDocs.transaction
 }
 
 module.exports = [root, login, validate, newuser, expenses, invoice, statement, userAccount, transaction]
