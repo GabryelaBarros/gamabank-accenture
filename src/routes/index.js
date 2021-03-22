@@ -41,7 +41,6 @@ const newuser = {
     options: ApiDocs.signup
 }
 
-
 const expenses = {
     method: 'POST',
     path: '/expense',
