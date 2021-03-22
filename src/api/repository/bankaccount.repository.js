@@ -40,6 +40,7 @@ const findAccountByCc = async (cc) => {
 
     const [dataFromDb] = await database.executeQuery(query)
     return dataFromDb
+    
 }
 
 const findAccountByUserId = async(userId) => {
